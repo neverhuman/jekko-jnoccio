@@ -7,12 +7,12 @@
 - Target stack ID: `rust-ts-vite-react-postgres-bounded-python`
 - Target stack: `Rust core + TypeScript/React/Vite + PostgreSQL + generated contracts + exception-only Python AI/data service`
 - Repo: `.`
-- Run ID: `1781139497`
-- Started at: `1781139497`
-- Elapsed: `235` ms
+- Run ID: `1781140659`
+- Started at: `1781140659`
+- Elapsed: `50` ms
 - Scope: `full`
-- Raw score: `80`
-- Final score: `80`
+- Raw score: `78`
+- Final score: `78`
 - Decision: `advisory`
 - Minimum score: `85`
 - Caps applied: `none`
@@ -81,21 +81,21 @@
 
 | Kind | Severity | Language | Lines | Tokens | Instances | Reason |
 | --- | --- | --- | ---: | ---: | --- | --- |
-| `ExactUnitDifferentName` | `Warning` | `rust` | 1 | 2 | `crates/domain/src/lib.rs:24-25, crates/domain/src/lib.rs:31-32, crates/domain/src/lib.rs:48-49` | `same body appears under different names across files` |
+| `ExactUnitDifferentName` | `Warning` | `rust` | 1 | 2 | `crates/domain/src/lib.rs:24-25, crates/domain/src/lib.rs:33-34, crates/domain/src/lib.rs:50-51` | `same body appears under different names across files` |
 
 ## Dimensions
 
 | Dimension | Weight | Score | Weighted | Evidence |
 | --- | ---: | ---: | ---: | --- |
 | Ownership and navigation surface | 13 | 100 | 13.00 | root `AGENTS.md` present; owner map present |
-| Contract and boundary integrity | 13 | 98 | 12.74 | contract surface found; generated contract artifacts found |
+| Contract and boundary integrity | 13 | 78 | 10.14 | generated contract artifacts found; polyglot boundary layout present |
 | Proof lanes and test routing | 12 | 96 | 11.52 | one-command setup/validation lane found; deterministic fast lane found |
 | Security and supply-chain posture | 12 | 80 | 9.60 | lockfile present; secret or dependency scan tooling found |
-| Code shape and semantic surface | 12 | 90 | 10.80 | largest authored code file: crates/domain/src/lib.rs (55 LOC); copy-code advisory classes found: 1 (advisory only, no score impact) |
+| Code shape and semantic surface | 12 | 90 | 10.80 | largest authored code file: crates/domain/src/lib.rs (57 LOC); copy-code advisory classes found: 1 (advisory only, no score impact) |
 | Data truth and workflow safety | 8 | 50 | 4.00 |  |
-| Observability and repair evidence | 8 | 57 | 4.56 | ops/observability directory present; agent-friendly exception pattern found |
+| Observability and repair evidence | 8 | 65 | 5.20 | ops/observability directory present; agent-friendly exception pattern found |
 | Context economy and agent instructions | 7 | 93 | 6.51 | root `AGENTS.md` present; root `AGENTS.md` stays short |
-| Jankurai tool adoption and CI replacement | 7 | 10 | 0.70 | control-plane files present; applicable=15 |
+| Jankurai tool adoption and CI replacement | 7 | 10 | 0.70 | control-plane files present; applicable=14 |
 | Python containment and polyglot hygiene | 4 | 100 | 4.00 | no Python files in scope |
 | Build speed signals | 4 | 60 | 2.40 | build acceleration markers found; targeted test/build commands found |
 
@@ -125,17 +125,17 @@
 ## Tool Adoption
 
 - Control plane present: `true`
-- Applicable tools: `15`
+- Applicable tools: `14`
 - Configured: `0`
 - CI evidence: `0`
 - Artifact verified: `0`
 - Replaced count: `0`
-- Missing CI evidence: `audit-ci, proof-routing, proofbind, proofmark-rust, copy-code, security, ci-bad-behavior, git-bad-behavior, release-bad-behavior, contract-drift, rust-witness, authz-matrix, agent-tool-supply, release-readiness, cost-budget`
+- Missing CI evidence: `audit-ci, proof-routing, proofbind, proofmark-rust, copy-code, security, ci-bad-behavior, git-bad-behavior, release-bad-behavior, contract-drift, rust-witness, authz-matrix, agent-tool-supply, release-readiness`
 
 | Tool | Category | Mode | Status | Replaced | Artifacts |
 | --- | --- | --- | --- | --- | --- |
-| `audit-ci` | `audit` | `auto` | `missing` | `manual repo scoring, ad hoc score gates` | `agent/repo-score.json, agent/repo-score.md` |
-| `proof-routing` | `proof` | `auto` | `missing` | `ad hoc proof lane selection, manual proof receipts` | `agent/repo-score.json, agent/repo-score.md, target/jankurai/repair-queue.jsonl` |
+| `audit-ci` | `audit` | `auto` | `missing` | `manual repo scoring, ad hoc score gates` | `.jankurai/repo-score.json, .jankurai/repo-score.md` |
+| `proof-routing` | `proof` | `auto` | `missing` | `ad hoc proof lane selection, manual proof receipts` | `.jankurai/repo-score.json, .jankurai/repo-score.md, target/jankurai/repair-queue.jsonl` |
 | `proofbind` | `proof` | `auto` | `missing` | `manual changed-surface routing, ad hoc proof obligation lists` | `target/jankurai/proofbind/surface-witness.json, target/jankurai/proofbind/obligations.json` |
 | `proofmark-rust` | `proof` | `auto` | `missing` | `line-only coverage review, manual in-diff mutation review` | `target/jankurai/proofmark/proofmark-receipt.json, target/jankurai/proofmark/proof-receipt.json` |
 | `copy-code` | `audit` | `auto` | `missing` | `ad hoc copy-code review, manual duplication triage` | `target/jankurai/copy-code.json, target/jankurai/copy-code.md` |
@@ -145,15 +145,15 @@
 | `release-bad-behavior` | `release` | `auto` | `missing` | `manual release checklist, ad hoc tag and artifact review, manual provenance review` | `target/jankurai/language-bad-behavior.log` |
 | `ux-qa` | `ux` | `auto` | `not_applicable` | `playwright, axe-core, visual baselines` | `target/jankurai/ux-qa.json` |
 | `db-migration-analyze` | `db` | `auto` | `not_applicable` | `manual migration review` | `target/jankurai/migration-report.json` |
-| `contract-drift` | `contract` | `auto` | `missing` | `handwritten contract drift checks, openapi diff` | `agent/repo-score.json, agent/repo-score.md` |
+| `contract-drift` | `contract` | `auto` | `missing` | `handwritten contract drift checks, openapi diff` | `.jankurai/repo-score.json, .jankurai/repo-score.md` |
 | `rust-witness` | `rust` | `auto` | `missing` | `manual witness graphing` | `target/jankurai/rust/witness-graph.json` |
 | `vibe-coverage` | `audit` | `auto` | `not_applicable` | `manual vibe-coding coverage spreadsheet` | `target/jankurai/vibe-coverage.json, target/jankurai/vibe-coverage.md` |
 | `coverage-evidence` | `proof` | `auto` | `not_applicable` | `manual coverage report review, ad hoc mutation survivor review` | `target/jankurai/coverage/coverage-audit.json, target/jankurai/coverage/coverage-audit.md` |
-| `authz-matrix` | `security` | `auto` | `missing` | `manual authz matrix review` | `agent/repo-score.json, agent/repo-score.md` |
-| `input-boundary` | `security` | `auto` | `not_applicable` | `manual unsafe sink review` | `agent/repo-score.json, agent/repo-score.md` |
-| `agent-tool-supply` | `security` | `auto` | `missing` | `manual MCP/tool trust review` | `agent/repo-score.json, agent/repo-score.md` |
-| `release-readiness` | `release` | `auto` | `missing` | `manual launch checklist` | `agent/repo-score.json, agent/repo-score.md` |
-| `cost-budget` | `release` | `auto` | `missing` | `manual spend review` | `agent/repo-score.json, agent/repo-score.md` |
+| `authz-matrix` | `security` | `auto` | `missing` | `manual authz matrix review` | `.jankurai/repo-score.json, .jankurai/repo-score.md` |
+| `input-boundary` | `security` | `auto` | `not_applicable` | `manual unsafe sink review` | `.jankurai/repo-score.json, .jankurai/repo-score.md` |
+| `agent-tool-supply` | `security` | `auto` | `missing` | `manual MCP/tool trust review` | `.jankurai/repo-score.json, .jankurai/repo-score.md` |
+| `release-readiness` | `release` | `auto` | `missing` | `manual launch checklist` | `.jankurai/repo-score.json, .jankurai/repo-score.md` |
+| `cost-budget` | `release` | `auto` | `not_applicable` | `manual spend review` | `.jankurai/repo-score.json, .jankurai/repo-score.md` |
 
 ## Boundary Reclassifications
 
@@ -181,7 +181,17 @@ No audited runtime boundary reclassifications declared.
    Rerun: `just fast`
    Fingerprint: `sha256:49dd87b3bb47929ee7676db7afb108c2861b56edf9a1ebe40d26535a1b8717f8`
    Evidence: build acceleration markers found, targeted test/build commands found, locked dependency graph present
-3. `medium` `data` `db/`
+3. `medium` `boundary` `agent/boundaries.toml`
+   Rule: `HLT-007-HANDWRITTEN-CONTRACT`
+   Check: `HLT-007-HANDWRITTEN-CONTRACT:boundary` `soft` confidence `0.76`
+   Route: TLR `Contracts/data`, lane `contract`, owner `agent`
+   Docs: `docs/audit-rubric.md#known-vibe-coding-insults`
+   Reason: `Contract and boundary integrity` scored 78 below the standard floor of 85
+   Fix: add generated contracts and boundary checks for public APIs, data access, and cross-runtime seams
+   Rerun: `just fast`
+   Fingerprint: `sha256:5ef164d06d7c42c89df3c44afe8da6fb358d37ac47a34ba513c860b76d150e3e`
+   Evidence: generated contract artifacts found, polyglot boundary layout present, boundary manifest present, Rust typed boundary helpers found
+4. `medium` `data` `db/`
    Rule: `HLT-006-DIRECT-DB-WRONG-LAYER`
    Check: `HLT-006-DIRECT-DB-WRONG-LAYER:data` `soft` confidence `0.76`
    Route: TLR `Contracts/data`, lane `db`, owner `tools`
@@ -191,27 +201,16 @@ No audited runtime boundary reclassifications declared.
    Rerun: `just fast`
    Fingerprint: `sha256:6dc277f838aa42b508c136f6ba666d602ecefe226bc4c238b24388640ee21f82`
    Evidence: Data truth and workflow safety scored 50
-4. `medium` `observability` `docs/testing.md`
+5. `medium` `observability` `docs/testing.md`
    Rule: `HLT-017-OPAQUE-OBSERVABILITY`
    Check: `HLT-017-OPAQUE-OBSERVABILITY:observability` `soft` confidence `0.76`
    Route: TLR `Repair`, lane `observability`, owner `standard`
    Docs: `agent/JANKURAI_STANDARD.md#repair-receipts`
-   Reason: `Observability and repair evidence` scored 57 below the standard floor of 85
+   Reason: `Observability and repair evidence` scored 65 below the standard floor of 85
    Fix: add structured errors, telemetry, and repair receipts that tell the next agent where to rerun proof
    Rerun: `just score`
-   Fingerprint: `sha256:239dbe007e51041332128fdb61472a10a300dd0ac38050e2ee5cdf006358ef47`
-   Evidence: ops/observability directory present, agent-friendly exception pattern found
-5. `medium` `release` `docs/testing.md`
-   Rule: `HLT-026-COST-BUDGET-GAP`
-   Check: `HLT-026-COST-BUDGET-GAP:release` `soft` confidence `0.88`
-   Route: TLR `Verification`, lane `release`, owner `standard`
-   Docs: `docs/testing.md`
-   Matched term: `budget`
-   Reason: unbounded paid work needs budgets and stop conditions
-   Fix: add explicit budgets, quotas, stop conditions, and kill-switch evidence for paid or unbounded operations
-   Rerun: `just check`
-   Fingerprint: `sha256:edd248b7afc24b644107205fa5b84a88103ac4b622009ff9f19b779de8798f59`
-   Evidence: cost surface found without budget/stop-condition policy
+   Fingerprint: `sha256:7a762341dffe92b8587097cc2b8dd6e4346f98c7881952f4465cd2c5afa21674`
+   Evidence: ops/observability directory present, agent-friendly exception pattern found, repair receipt guidance is documented
 
 ## Policy
 
@@ -221,12 +220,12 @@ No audited runtime boundary reclassifications declared.
 
 ## Agent Fix Queue
 
-1. `medium` `HLT-006-DIRECT-DB-WRONG-LAYER` `db/` - move durable truth into migrations, constraints, adapters, and application-owned transactions
+1. `medium` `HLT-007-HANDWRITTEN-CONTRACT` `agent/boundaries.toml` - add generated contracts and boundary checks for public APIs, data access, and cross-runtime seams
+   Route: `Contracts/data`/`contract`
+2. `medium` `HLT-006-DIRECT-DB-WRONG-LAYER` `db/` - move durable truth into migrations, constraints, adapters, and application-owned transactions
    Route: `Contracts/data`/`db`
-2. `medium` `HLT-018-PERF-CONCURRENCY-DRIFT` `Justfile` - add fast deterministic build/test targets, caches, and narrow proof lanes for agent iteration
+3. `medium` `HLT-018-PERF-CONCURRENCY-DRIFT` `Justfile` - add fast deterministic build/test targets, caches, and narrow proof lanes for agent iteration
    Route: `Verification`/`fast`
-3. `medium` `HLT-026-COST-BUDGET-GAP` `docs/testing.md` - add explicit budgets, quotas, stop conditions, and kill-switch evidence for paid or unbounded operations
-   Route: `Verification`/`release`
 4. `medium` `HLT-017-OPAQUE-OBSERVABILITY` `docs/testing.md` - add structured errors, telemetry, and repair receipts that tell the next agent where to rerun proof
    Route: `Repair`/`observability`
 5. `medium` `HLT-016-SUPPLY-CHAIN-DRIFT` `.github/workflows/jankurai.yml` - wire secret, dependency, provenance, and workflow scans into an operational CI lane

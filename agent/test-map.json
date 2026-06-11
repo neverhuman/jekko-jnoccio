@@ -40,6 +40,10 @@
       "command": "just fast",
       "purpose": "verify agent-readable docs stay routed"
     },
+    "docs/testing.md": {
+      "command": "bash ops/ci/jankurai.sh",
+      "purpose": "verify testing, repair receipt, and launch-gate evidence stays audit-clean"
+    },
     "ops/": {
       "command": "bash scripts/ci-local.sh",
       "purpose": "verify CI wrappers and hooks stay runnable"
