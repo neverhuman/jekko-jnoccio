@@ -76,9 +76,37 @@
       "command": "just test",
       "purpose": "verify domain repair guidance stays paired with tests"
     },
+    "crates/domain/observability.md": {
+      "command": "just test",
+      "purpose": "verify domain repair receipts stay paired with tests"
+    },
     "crates/domain/Cargo.toml": {
       "command": "just test",
       "purpose": "verify domain crate manifest stays compiled"
+    },
+    "db/": {
+      "command": "jankurai doctor --fail-on critical",
+      "purpose": "advisory database boundary health check"
+    },
+    "db/AGENTS.md": {
+      "command": "jankurai doctor --fail-on critical",
+      "purpose": "verify database repair guidance stays visible"
+    },
+    "db/constraints/": {
+      "command": "jankurai doctor --fail-on critical",
+      "purpose": "advisory constraint-lane health check until DB proof exists"
+    },
+    "db/migrations/": {
+      "command": "jankurai doctor --fail-on critical",
+      "purpose": "advisory control-plane health check until migration tests exist"
+    },
+    "ops/observability/": {
+      "command": "just score",
+      "purpose": "verify local repair receipts stay routed"
+    },
+    "schemas/repair-queue.schema.json": {
+      "command": "just score",
+      "purpose": "verify repair queue schema stays routed"
     }
   }
 }

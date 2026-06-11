@@ -20,6 +20,15 @@ jobs:
     steps:
       - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
       - uses: dtolnay/rust-toolchain@29eef336d9b2848a0b548edc03f92a220660cdb8 # stable
+      - name: Cache cargo and sccache
+        uses: actions/cache@0057852bfaa89a56745cba8c7296529d2fc39830 # v4.2.2
+        with:
+          path: |
+            target/jankurai-cache
+            ~/.cargo/registry
+            ~/.cargo/git
+            ~/.cache/sccache
+          key: ${{ runner.os }}-jekko-jnoccio-jankurai-${{ hashFiles('Cargo.lock', 'Cargo.toml', 'crates/domain/Cargo.toml') }}
       - name: Jankurai command receipts
         run: |
           : "jankurai audit . --mode advisory --json agent/repo-score.json --md agent/repo-score.md"

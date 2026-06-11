@@ -7,12 +7,12 @@
 - Target stack ID: `rust-ts-vite-react-postgres-bounded-python`
 - Target stack: `Rust core + TypeScript/React/Vite + PostgreSQL + generated contracts + exception-only Python AI/data service`
 - Repo: `.`
-- Run ID: `1781140659`
-- Started at: `1781140659`
-- Elapsed: `50` ms
+- Run ID: `1781216454`
+- Started at: `1781216454`
+- Elapsed: `51` ms
 - Scope: `full`
-- Raw score: `78`
-- Final score: `78`
+- Raw score: `86`
+- Final score: `86`
 - Decision: `advisory`
 - Minimum score: `85`
 - Caps applied: `none`
@@ -88,20 +88,20 @@
 | Dimension | Weight | Score | Weighted | Evidence |
 | --- | ---: | ---: | ---: | --- |
 | Ownership and navigation surface | 13 | 100 | 13.00 | root `AGENTS.md` present; owner map present |
-| Contract and boundary integrity | 13 | 78 | 10.14 | generated contract artifacts found; polyglot boundary layout present |
-| Proof lanes and test routing | 12 | 96 | 11.52 | one-command setup/validation lane found; deterministic fast lane found |
+| Contract and boundary integrity | 13 | 93 | 12.09 | generated contract artifacts found; polyglot boundary layout present |
+| Proof lanes and test routing | 12 | 100 | 12.00 | one-command setup/validation lane found; deterministic fast lane found |
 | Security and supply-chain posture | 12 | 80 | 9.60 | lockfile present; secret or dependency scan tooling found |
 | Code shape and semantic surface | 12 | 90 | 10.80 | largest authored code file: crates/domain/src/lib.rs (57 LOC); copy-code advisory classes found: 1 (advisory only, no score impact) |
-| Data truth and workflow safety | 8 | 50 | 4.00 |  |
-| Observability and repair evidence | 8 | 65 | 5.20 | ops/observability directory present; agent-friendly exception pattern found |
+| Data truth and workflow safety | 8 | 85 | 6.80 | database surface present; structured db boundary manifest present |
+| Observability and repair evidence | 8 | 85 | 6.80 | ops/observability directory present; repair queue schema is present |
 | Context economy and agent instructions | 7 | 93 | 6.51 | root `AGENTS.md` present; root `AGENTS.md` stays short |
 | Jankurai tool adoption and CI replacement | 7 | 10 | 0.70 | control-plane files present; applicable=14 |
 | Python containment and polyglot hygiene | 4 | 100 | 4.00 | no Python files in scope |
-| Build speed signals | 4 | 60 | 2.40 | build acceleration markers found; targeted test/build commands found |
+| Build speed signals | 4 | 80 | 3.20 | build acceleration markers found; targeted test/build commands found |
 
 ## Reference Profile Structure
 
-- Applicable cells: `2` canonical=`2` noncanonical=`0` guidance missing=`0`
+- Applicable cells: `3` canonical=`3` noncanonical=`0` guidance missing=`0`
 
 | Cell | Status | Canonical | Detected | Aliases | Guidance | Owner | Proof lane | Agent fix |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- |
@@ -112,7 +112,7 @@
 | `adapters` | `not_applicable` | `crates/adapters/` | `-` | `adapters/, infra/, integrations/` | `not_required` | `crates/adapters` | `adapter integration tests` | `no action` |
 | `workers` | `not_applicable` | `crates/workers/` | `-` | `workers/, jobs/, scheduler/, queue/` | `not_required` | `crates/workers` | `workflow / replay tests` | `no action` |
 | `contracts` | `not_applicable` | `contracts/` | `-` | `openapi/, protobuf/, json-schema/, generated/` | `not_required` | `contracts` | `generation / drift checks` | `no action` |
-| `db` | `not_applicable` | `db/` | `-` | `migrations/, constraints/, sql/` | `not_required` | `db` | `migration / constraint tests` | `no action` |
+| `db` | `canonical` | `db/` | `db` | `migrations/, constraints/, sql/` | `present` | `db` | `migration / constraint tests` | `keep `db/AGENTS.md` aligned with owns / forbidden / proof lane guidance` |
 | `python-ai` | `not_applicable` | `python/ai-service/` | `-` | `python/, ai-service/, evals/, embeddings/, model/` | `not_required` | `python/ai-service` | `eval / contract tests` | `no action` |
 | `ops` | `canonical` | `ops/` | `.github, .github/workflows, ops` | `.github/, .github/workflows/, ci/, release/, observability/, security/` | `present` | `ops` | `security lane / workflow lint` | `keep `ops/AGENTS.md` aligned with owns / forbidden / proof lane guidance` |
 
@@ -176,41 +176,11 @@ No audited runtime boundary reclassifications declared.
    Check: `HLT-018-PERF-CONCURRENCY-DRIFT:proof` `soft` confidence `0.76`
    Route: TLR `Verification`, lane `fast`, owner `workspace`
    Docs: `docs/testing.md`
-   Reason: `Build speed signals` scored 60 below the standard floor of 85
+   Reason: `Build speed signals` scored 80 below the standard floor of 85
    Fix: add fast deterministic build/test targets, caches, and narrow proof lanes for agent iteration
    Rerun: `just fast`
-   Fingerprint: `sha256:49dd87b3bb47929ee7676db7afb108c2861b56edf9a1ebe40d26535a1b8717f8`
-   Evidence: build acceleration markers found, targeted test/build commands found, locked dependency graph present
-3. `medium` `boundary` `agent/boundaries.toml`
-   Rule: `HLT-007-HANDWRITTEN-CONTRACT`
-   Check: `HLT-007-HANDWRITTEN-CONTRACT:boundary` `soft` confidence `0.76`
-   Route: TLR `Contracts/data`, lane `contract`, owner `agent`
-   Docs: `docs/audit-rubric.md#known-vibe-coding-insults`
-   Reason: `Contract and boundary integrity` scored 78 below the standard floor of 85
-   Fix: add generated contracts and boundary checks for public APIs, data access, and cross-runtime seams
-   Rerun: `just fast`
-   Fingerprint: `sha256:5ef164d06d7c42c89df3c44afe8da6fb358d37ac47a34ba513c860b76d150e3e`
-   Evidence: generated contract artifacts found, polyglot boundary layout present, boundary manifest present, Rust typed boundary helpers found
-4. `medium` `data` `db/`
-   Rule: `HLT-006-DIRECT-DB-WRONG-LAYER`
-   Check: `HLT-006-DIRECT-DB-WRONG-LAYER:data` `soft` confidence `0.76`
-   Route: TLR `Contracts/data`, lane `db`, owner `tools`
-   Docs: `docs/audit-rubric.md#required-shape`
-   Reason: `Data truth and workflow safety` scored 50 below the standard floor of 85
-   Fix: move durable truth into migrations, constraints, adapters, and application-owned transactions
-   Rerun: `just fast`
-   Fingerprint: `sha256:6dc277f838aa42b508c136f6ba666d602ecefe226bc4c238b24388640ee21f82`
-   Evidence: Data truth and workflow safety scored 50
-5. `medium` `observability` `docs/testing.md`
-   Rule: `HLT-017-OPAQUE-OBSERVABILITY`
-   Check: `HLT-017-OPAQUE-OBSERVABILITY:observability` `soft` confidence `0.76`
-   Route: TLR `Repair`, lane `observability`, owner `standard`
-   Docs: `agent/JANKURAI_STANDARD.md#repair-receipts`
-   Reason: `Observability and repair evidence` scored 65 below the standard floor of 85
-   Fix: add structured errors, telemetry, and repair receipts that tell the next agent where to rerun proof
-   Rerun: `just score`
-   Fingerprint: `sha256:7a762341dffe92b8587097cc2b8dd6e4346f98c7881952f4465cd2c5afa21674`
-   Evidence: ops/observability directory present, agent-friendly exception pattern found, repair receipt guidance is documented
+   Fingerprint: `sha256:2f2531223d7f7036c20d44b58cd52e64aa53ffd6cb85e01e541c1feff0c09cb2`
+   Evidence: build acceleration markers found, targeted test/build commands found, locked dependency graph present, CI cache hint found
 
 ## Policy
 
@@ -220,13 +190,7 @@ No audited runtime boundary reclassifications declared.
 
 ## Agent Fix Queue
 
-1. `medium` `HLT-007-HANDWRITTEN-CONTRACT` `agent/boundaries.toml` - add generated contracts and boundary checks for public APIs, data access, and cross-runtime seams
-   Route: `Contracts/data`/`contract`
-2. `medium` `HLT-006-DIRECT-DB-WRONG-LAYER` `db/` - move durable truth into migrations, constraints, adapters, and application-owned transactions
-   Route: `Contracts/data`/`db`
-3. `medium` `HLT-018-PERF-CONCURRENCY-DRIFT` `Justfile` - add fast deterministic build/test targets, caches, and narrow proof lanes for agent iteration
+1. `medium` `HLT-018-PERF-CONCURRENCY-DRIFT` `Justfile` - add fast deterministic build/test targets, caches, and narrow proof lanes for agent iteration
    Route: `Verification`/`fast`
-4. `medium` `HLT-017-OPAQUE-OBSERVABILITY` `docs/testing.md` - add structured errors, telemetry, and repair receipts that tell the next agent where to rerun proof
-   Route: `Repair`/`observability`
-5. `medium` `HLT-016-SUPPLY-CHAIN-DRIFT` `.github/workflows/jankurai.yml` - wire secret, dependency, provenance, and workflow scans into an operational CI lane
+2. `medium` `HLT-016-SUPPLY-CHAIN-DRIFT` `.github/workflows/jankurai.yml` - wire secret, dependency, provenance, and workflow scans into an operational CI lane
    Route: `Security, secrets, agency`/`security`

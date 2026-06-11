@@ -1,0 +1,36 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://example.invalid/schemas/repair-queue.schema.json",
+  "title": "Repair Queue Entry",
+  "type": "object",
+  "required": [
+    "rule_id",
+    "lane",
+    "path",
+    "repair_hint",
+    "rerun_command"
+  ],
+  "properties": {
+    "rule_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "lane": {
+      "type": "string",
+      "minLength": 1
+    },
+    "path": {
+      "type": "string",
+      "minLength": 1
+    },
+    "repair_hint": {
+      "type": "string",
+      "minLength": 1
+    },
+    "rerun_command": {
+      "type": "string",
+      "minLength": 1
+    }
+  },
+  "additionalProperties": true
+}

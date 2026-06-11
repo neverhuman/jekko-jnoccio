@@ -1,7 +1,7 @@
 [db]
-constraint_paths = []
-migration_paths = []
-root_paths = []
+constraint_paths = ["db/constraints"]
+migration_paths = ["db/migrations"]
+root_paths = ["db"]
 
 [python]
 allowed_truth_paths = []

@@ -9,9 +9,12 @@
     "Justfile": "workspace",
     "README.md": "workspace",
     "agent/": "agent",
+    "crates/domain/observability.md": "agent",
+    "schemas/repair-queue.schema.json": "agent",
     "docs/": "standard",
     "ops/": "ops",
     "ops/git-hooks/": "ops",
+    "ops/observability/": "standard",
     "rust-toolchain.toml": "ops",
     "scripts/": "ops",
     "src/": "workspace",
@@ -19,7 +22,11 @@
     "CHANGELOG.md": "workspace",
     "crates/domain/": "workspace",
     "crates/domain/AGENTS.md": "agent",
-    "crates/domain/Cargo.toml": "workspace"
+    "crates/domain/Cargo.toml": "workspace",
+    "db/": "data",
+    "db/AGENTS.md": "data",
+    "db/constraints/": "data",
+    "db/migrations/": "data"
   },
   "workspace": "jekko-jnoccio"
 }

@@ -1,16 +1,16 @@
 {
-  "report_fingerprint": "sha256:e5b7d4cbd9506c50f4beb3c1bb97190f459d62d75d86db6c6e5086bbc8a8549a",
-  "input_fingerprint": "sha256:a377e1992ab179224c6bc15e806d6ab5bff3c38358115c1ecadf26925df49f75",
+  "report_fingerprint": "sha256:09f6fee0e96e923f1f3edb998f34874319dd0fcb44d0c7b4b43092801b19709c",
+  "input_fingerprint": "sha256:8eee60693ce8744560cff6b8416b083dac167e77bf07c0f0b3a9b3626b2cdd5e",
   "policy_fingerprint": "sha256:0000000000000000000000000000000000000000000000000000000000000000",
   "manifest_fingerprints": {
-    "owner_map": "sha256:640a2e465093de81da822b9382644609b550f1a1f7bccf7115485285b14db662",
-    "test_map": "sha256:b0ab2c30fb327122e86f7d1afa5275d79f077824c0cb82fd25b87676ad34de49",
+    "owner_map": "sha256:134fe5b739478544897b9f4ef60304ae95ed48a159a9b9c422adaf921f0c639f",
+    "test_map": "sha256:25492933acc3b0cc06281231cc5ad5f765fa269c07e7301f7201766f3aba453c",
     "generated_zones": "sha256:4abfb477fffea6a8188770acedaa56ead313947c05c107b74a5644345354723e",
-    "boundaries": "sha256:d7f6357507cb0691aa160b46cf89eeef35f5e855905df17721f48d44c76643fb",
+    "boundaries": "sha256:9e6ae6cb13a4b2160f2831b4d872236ead279a02a9b316b6fa8a06b5c4296723",
     "standard_version": "sha256:27e5d92b64d86aacffcf8461e47e810188bca4716aaa6a2d1f74140d65ad220e"
   },
   "dirty_worktree": true,
-  "generated_at": "1781140659",
+  "generated_at": "1781216454",
   "schema_url": "schemas/repo-score.schema.json",
   "standard": "jankurai",
   "standard_version": "0.9.0",
@@ -20,29 +20,29 @@
   "target_stack_id": "rust-ts-vite-react-postgres-bounded-python",
   "target_stack": "Rust core + TypeScript/React/Vite + PostgreSQL + generated contracts + exception-only Python AI/data service",
   "claimed_conformance_level": "HL3",
-  "observed_conformance_level": "HL2",
-  "conformance_decision": "review",
+  "observed_conformance_level": "HL3",
+  "conformance_decision": "pass",
   "conformance_blockers": [],
   "repo": ".",
-  "run_id": "1781140659",
-  "started_at": "1781140659",
-  "elapsed_ms": 50,
+  "run_id": "1781216454",
+  "started_at": "1781216454",
+  "elapsed_ms": 51,
   "scope": {
     "mode": "full",
     "paths": []
   },
-  "score": 78,
-  "raw_score": 78,
+  "score": 86,
+  "raw_score": 86,
   "decision": {
     "status": "advisory",
     "minimum_score": 85,
     "passed": true,
     "hard_findings": 0,
-    "soft_findings": 5,
+    "soft_findings": 2,
     "ratchet": {
-      "baseline_score": 78,
+      "baseline_score": 86,
       "allowed_drop": 0,
-      "passed": false,
+      "passed": true,
       "score_delta": 0,
       "baseline_report_fingerprint": "sha256:0000000000000000000000000000000000000000000000000000000000000000",
       "baseline_input_fingerprint": "sha256:0000000000000000000000000000000000000000000000000000000000000000",
@@ -53,7 +53,7 @@
     }
   },
   "git": {
-    "head": "1f775d9",
+    "head": "cce0450",
     "base": null,
     "changed_files": 0,
     "mode": "full",
@@ -277,6 +277,8 @@
         "local `AGENTS.md` file(s)",
         "reference-profile cell `domain` is canonical",
         "reference-profile cell `domain` has local AGENTS.md guidance",
+        "reference-profile cell `db` is canonical",
+        "reference-profile cell `db` has local AGENTS.md guidance",
         "reference-profile cell `ops` is canonical",
         "reference-profile cell `ops` has local AGENTS.md guidance",
         "root `README.md` routes to workspace layout",
@@ -288,24 +290,27 @@
     {
       "name": "Contract and boundary integrity",
       "weight": 13,
-      "score": 78,
-      "weighted_points": 10.14,
+      "score": 93,
+      "weighted_points": 12.09,
       "evidence": [
         "generated contract artifacts found",
         "polyglot boundary layout present",
         "boundary manifest present",
-        "Rust typed boundary helpers found"
+        "machine-readable schemas present",
+        "Rust typed boundary helpers found",
+        "schema/tooling contract posture is clean"
       ],
       "notes": []
     },
     {
       "name": "Proof lanes and test routing",
       "weight": 12,
-      "score": 96,
-      "weighted_points": 11.52,
+      "score": 100,
+      "weighted_points": 12.0,
       "evidence": [
         "one-command setup/validation lane found",
         "deterministic fast lane found",
+        "test runner present in automation surface",
         "GitHub workflow files present",
         "test/proof routing map present",
         "jankurai audit lane found in CI",
@@ -349,19 +354,26 @@
     {
       "name": "Data truth and workflow safety",
       "weight": 8,
-      "score": 50,
-      "weighted_points": 4.0,
-      "evidence": [],
+      "score": 85,
+      "weighted_points": 6.8,
+      "evidence": [
+        "database surface present",
+        "structured db boundary manifest present",
+        "db boundary routes roots, migrations, and constraints",
+        "migration directory present"
+      ],
       "notes": []
     },
     {
       "name": "Observability and repair evidence",
       "weight": 8,
-      "score": 65,
-      "weighted_points": 5.2,
+      "score": 85,
+      "weighted_points": 6.8,
       "evidence": [
         "ops/observability directory present",
+        "repair queue schema is present",
         "agent-friendly exception pattern found",
+        "repair-hint and receipt convention are documented",
         "repair receipt guidance is documented"
       ],
       "notes": []
@@ -415,12 +427,14 @@
     {
       "name": "Build speed signals",
       "weight": 4,
-      "score": 60,
-      "weighted_points": 2.4,
+      "score": 80,
+      "weighted_points": 3.2,
       "evidence": [
         "build acceleration markers found",
         "targeted test/build commands found",
-        "locked dependency graph present"
+        "locked dependency graph present",
+        "CI cache hint found",
+        "explicit cache marker plus narrow per-package target found"
       ],
       "notes": []
     }
@@ -954,7 +968,7 @@
   "copy_code": {
     "schema_version": "1.1.0",
     "generated_by": "jankurai copy-code",
-    "generated_at": "2026-06-11T01:17:39.448070982+00:00",
+    "generated_at": "2026-06-11T22:20:54.349412579+00:00",
     "repo": ".",
     "auditor_version": "1.6.10",
     "status": "review",
@@ -992,7 +1006,7 @@
       ]
     },
     "summary": {
-      "files_scanned": 41,
+      "files_scanned": 48,
       "files_considered": 2,
       "active_files": 2,
       "exact_file_classes": 0,
@@ -1058,8 +1072,8 @@
     ]
   },
   "profile_structure": {
-    "applicable_count": 2,
-    "canonical_count": 2,
+    "applicable_count": 3,
+    "canonical_count": 3,
     "noncanonical_count": 0,
     "guidance_missing_count": 0,
     "cells": [
@@ -1181,19 +1195,21 @@
       },
       {
         "id": "db",
-        "applicable": false,
-        "status": "not_applicable",
+        "applicable": true,
+        "status": "canonical",
         "canonical_path": "db/",
-        "detected_paths": [],
+        "detected_paths": [
+          "db"
+        ],
         "aliases": [
           "migrations/",
           "constraints/",
           "sql/"
         ],
-        "guidance_status": "not_required",
+        "guidance_status": "present",
         "owner": "db",
         "proof_lane": "migration / constraint tests",
-        "agent_fix": "no action"
+        "agent_fix": "keep `db/AGENTS.md` aligned with owns / forbidden / proof lane guidance"
       },
       {
         "id": "python-ai",
@@ -1238,8 +1254,8 @@
       }
     ],
     "evidence": {
-      "applicable_count": 2,
-      "canonical_count": 2,
+      "applicable_count": 3,
+      "canonical_count": 3,
       "detected_cells": [
         {
           "canonical_path": "crates/domain/",
@@ -1248,6 +1264,15 @@
           ],
           "guidance_status": "present",
           "id": "domain",
+          "status": "canonical"
+        },
+        {
+          "canonical_path": "db/",
+          "detected_paths": [
+            "db"
+          ],
+          "guidance_status": "present",
+          "id": "db",
           "status": "canonical"
         },
         {
@@ -1295,115 +1320,28 @@
       "severity": "medium",
       "category": "proof",
       "path": "Justfile",
-      "problem": "`Build speed signals` scored 60 below the standard floor of 85",
+      "problem": "`Build speed signals` scored 80 below the standard floor of 85",
       "agent_fix": "add fast deterministic build/test targets, caches, and narrow proof lanes for agent iteration",
       "evidence": [
         "build acceleration markers found",
         "targeted test/build commands found",
-        "locked dependency graph present"
+        "locked dependency graph present",
+        "CI cache hint found"
       ],
       "check_id": "HLT-018-PERF-CONCURRENCY-DRIFT:proof",
       "hardness": "soft",
       "confidence": 0.76,
       "evidence_kind": "repository-scan",
       "rerun_command": "just fast",
-      "fingerprint": "sha256:49dd87b3bb47929ee7676db7afb108c2861b56edf9a1ebe40d26535a1b8717f8",
+      "fingerprint": "sha256:2f2531223d7f7036c20d44b58cd52e64aa53ffd6cb85e01e541c1feff0c09cb2",
       "rule_id": "HLT-018-PERF-CONCURRENCY-DRIFT",
       "tlr": "Verification",
       "lane": "fast",
       "docs_url": "docs/testing.md",
       "owner": "workspace"
-    },
-    {
-      "severity": "medium",
-      "category": "boundary",
-      "path": "agent/boundaries.toml",
-      "problem": "`Contract and boundary integrity` scored 78 below the standard floor of 85",
-      "agent_fix": "add generated contracts and boundary checks for public APIs, data access, and cross-runtime seams",
-      "evidence": [
-        "generated contract artifacts found",
-        "polyglot boundary layout present",
-        "boundary manifest present",
-        "Rust typed boundary helpers found"
-      ],
-      "check_id": "HLT-007-HANDWRITTEN-CONTRACT:boundary",
-      "hardness": "soft",
-      "confidence": 0.76,
-      "evidence_kind": "contract-manifest",
-      "rerun_command": "just fast",
-      "fingerprint": "sha256:5ef164d06d7c42c89df3c44afe8da6fb358d37ac47a34ba513c860b76d150e3e",
-      "rule_id": "HLT-007-HANDWRITTEN-CONTRACT",
-      "tlr": "Contracts/data",
-      "lane": "contract",
-      "docs_url": "docs/audit-rubric.md#known-vibe-coding-insults",
-      "owner": "agent"
-    },
-    {
-      "severity": "medium",
-      "category": "data",
-      "path": "db/",
-      "problem": "`Data truth and workflow safety` scored 50 below the standard floor of 85",
-      "agent_fix": "move durable truth into migrations, constraints, adapters, and application-owned transactions",
-      "evidence": [
-        "Data truth and workflow safety scored 50"
-      ],
-      "check_id": "HLT-006-DIRECT-DB-WRONG-LAYER:data",
-      "hardness": "soft",
-      "confidence": 0.76,
-      "evidence_kind": "sql",
-      "rerun_command": "just fast",
-      "fingerprint": "sha256:6dc277f838aa42b508c136f6ba666d602ecefe226bc4c238b24388640ee21f82",
-      "rule_id": "HLT-006-DIRECT-DB-WRONG-LAYER",
-      "tlr": "Contracts/data",
-      "lane": "db",
-      "docs_url": "docs/audit-rubric.md#required-shape",
-      "owner": "tools"
-    },
-    {
-      "severity": "medium",
-      "category": "observability",
-      "path": "docs/testing.md",
-      "problem": "`Observability and repair evidence` scored 65 below the standard floor of 85",
-      "agent_fix": "add structured errors, telemetry, and repair receipts that tell the next agent where to rerun proof",
-      "evidence": [
-        "ops/observability directory present",
-        "agent-friendly exception pattern found",
-        "repair receipt guidance is documented"
-      ],
-      "check_id": "HLT-017-OPAQUE-OBSERVABILITY:observability",
-      "hardness": "soft",
-      "confidence": 0.76,
-      "evidence_kind": "repository-scan",
-      "rerun_command": "just score",
-      "fingerprint": "sha256:7a762341dffe92b8587097cc2b8dd6e4346f98c7881952f4465cd2c5afa21674",
-      "rule_id": "HLT-017-OPAQUE-OBSERVABILITY",
-      "tlr": "Repair",
-      "lane": "observability",
-      "docs_url": "agent/JANKURAI_STANDARD.md#repair-receipts",
-      "owner": "standard"
     }
   ],
   "agent_fix_queue": [
-    {
-      "path": "agent/boundaries.toml",
-      "priority": "medium",
-      "rule_id": "HLT-007-HANDWRITTEN-CONTRACT",
-      "tlr": "Contracts/data",
-      "lane": "contract",
-      "owner": "agent",
-      "task": "add generated contracts and boundary checks for public APIs, data access, and cross-runtime seams",
-      "why": "`Contract and boundary integrity` scored 78 below the standard floor of 85"
-    },
-    {
-      "path": "db/",
-      "priority": "medium",
-      "rule_id": "HLT-006-DIRECT-DB-WRONG-LAYER",
-      "tlr": "Contracts/data",
-      "lane": "db",
-      "owner": "tools",
-      "task": "move durable truth into migrations, constraints, adapters, and application-owned transactions",
-      "why": "`Data truth and workflow safety` scored 50 below the standard floor of 85"
-    },
     {
       "path": "Justfile",
       "priority": "medium",
@@ -1412,17 +1350,7 @@
       "lane": "fast",
       "owner": "workspace",
       "task": "add fast deterministic build/test targets, caches, and narrow proof lanes for agent iteration",
-      "why": "`Build speed signals` scored 60 below the standard floor of 85"
-    },
-    {
-      "path": "docs/testing.md",
-      "priority": "medium",
-      "rule_id": "HLT-017-OPAQUE-OBSERVABILITY",
-      "tlr": "Repair",
-      "lane": "observability",
-      "owner": "standard",
-      "task": "add structured errors, telemetry, and repair receipts that tell the next agent where to rerun proof",
-      "why": "`Observability and repair evidence` scored 65 below the standard floor of 85"
+      "why": "`Build speed signals` scored 80 below the standard floor of 85"
     },
     {
       "path": ".github/workflows/jankurai.yml",
