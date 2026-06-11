@@ -17,7 +17,8 @@
     "src/": "workspace",
     "tests/": "workspace",
     "CHANGELOG.md": "workspace",
-    "crates/domain/": "workspace"
+    "crates/domain/": "workspace",
+    "crates/domain/AGENTS.md": "agent"
   },
   "workspace": "jekko-jnoccio"
 }

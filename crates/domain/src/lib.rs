@@ -17,6 +17,17 @@ impl DomainError {
         }
     }
 
+    /// Common fixes a repair agent should try first.
+    pub fn common_fixes(&self) -> &'static [&'static str] {
+        match self {
+            Self::IdentityDrift => &[
+                "compare Cargo.toml package name with repos.manifest.toml",
+                "restore REPOSITORY, ROLE, and PROFILE constants",
+                "rerun just test and bash ops/ci/jankurai.sh",
+            ],
+        }
+    }
+
     /// Local docs route for this error class.
     pub fn docs_url(&self) -> &'static str {
         "docs/architecture.md#identity-contract"

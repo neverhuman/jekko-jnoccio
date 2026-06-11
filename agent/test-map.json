@@ -67,6 +67,10 @@
     "crates/domain/": {
       "command": "just test",
       "purpose": "verify the domain error surface stays compiled"
+    },
+    "crates/domain/AGENTS.md": {
+      "command": "just test",
+      "purpose": "verify domain repair guidance stays paired with tests"
     }
   }
 }
