@@ -1,4 +1,4 @@
-//! Agent-readable domain error surface for split-family child repos.
+//! Agent-readable domain exception surface for split-family child repos.
 
 use std::fmt;
 
@@ -10,6 +10,16 @@ pub enum DomainError {
 }
 
 impl DomainError {
+    /// Purpose of this exception class for agent-readable repair routing.
+    pub fn purpose(&self) -> &'static str {
+        "keep split-family repository identity aligned with the manifest"
+    }
+
+    /// Reason this exception exists instead of a generic string error.
+    pub fn reason(&self) -> &'static str {
+        "agents need a stable repair category when manifest identity drifts"
+    }
+
     /// Human-readable repair hint for agent reruns.
     pub fn repair_hint(&self) -> &'static str {
         match self {
