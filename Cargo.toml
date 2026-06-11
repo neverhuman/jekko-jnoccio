@@ -9,3 +9,6 @@ path = "src/lib.rs"
 
 [workspace]
 members = [".", "crates/domain"]
+
+[dev-dependencies]
+proptest = "1"
