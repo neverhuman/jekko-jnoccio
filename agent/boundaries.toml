@@ -1,0 +1,15 @@
+[db]
+constraint_paths = []
+migration_paths = []
+root_paths = []
+
+[python]
+allowed_truth_paths = []
+
+[rust]
+domain_paths = ["src"]
+forbidden_domain_imports = ["std::fs", "std::env", "std::net", "std::time::SystemTime", "rand::", "sqlx::", "diesel::", "reqwest::"]
+
+[stack]
+id = "rust-split-family-child"
+version = "1.0.0"

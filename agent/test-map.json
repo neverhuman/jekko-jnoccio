@@ -1,8 +1,24 @@
 {
   "tests": {
+    ".github/workflows/": {
+      "command": "bash scripts/ci-local.sh",
+      "purpose": "verify workflow dispatch stays aligned with local CI wrappers"
+    },
+    ".gitignore": {
+      "command": "just fast",
+      "purpose": "verify ignored artifacts do not hide source files"
+    },
+    ".gitlab-ci.yml": {
+      "command": "bash scripts/ci-local.sh",
+      "purpose": "verify GitLab dispatch stays aligned with local CI wrappers"
+    },
     "AGENTS.md": {
       "command": "just fast",
-      "purpose": "verify the repo instructions stay visible"
+      "purpose": "verify repo instructions stay visible"
+    },
+    "Cargo.lock": {
+      "command": "just fast",
+      "purpose": "verify dependency lock stays in sync"
     },
     "Cargo.toml": {
       "command": "just fast",
@@ -10,31 +26,39 @@
     },
     "Justfile": {
       "command": "just fast",
-      "purpose": "verify the lane wrapper stays runnable"
+      "purpose": "verify lane wrappers stay runnable"
     },
     "README.md": {
       "command": "just fast",
       "purpose": "verify the repo README stays in sync"
     },
-    ".github/workflows/": {
-      "command": "just fast",
-      "purpose": "verify workflow dispatch stays script-only"
-    },
-    ".gitlab-ci.yml": {
-      "command": "just fast",
-      "purpose": "verify the GitLab pipeline stays dispatch-only"
-    },
     "agent/": {
-      "command": "just fast",
-      "purpose": "verify the Jankurai metadata bundle stays parseable"
+      "command": "bash ops/ci/jankurai.sh",
+      "purpose": "verify the Jankurai metadata bundle stays clean"
     },
-    "ops/ci/": {
+    "docs/": {
       "command": "just fast",
-      "purpose": "verify the shell lane scripts stay runnable"
+      "purpose": "verify agent-readable docs stay routed"
+    },
+    "ops/": {
+      "command": "bash scripts/ci-local.sh",
+      "purpose": "verify CI wrappers and hooks stay runnable"
+    },
+    "rust-toolchain.toml": {
+      "command": "just fast",
+      "purpose": "verify the Rust toolchain pin stays parseable"
+    },
+    "scripts/": {
+      "command": "bash -n scripts/ci-doctor.sh && bash -n scripts/ci-local.sh",
+      "purpose": "verify local CI helper scripts parse"
     },
     "src/": {
       "command": "just test",
-      "purpose": "verify the crate body and smoke test stay green"
+      "purpose": "verify the crate body and unit tests stay green"
+    },
+    "tests/": {
+      "command": "just test",
+      "purpose": "verify integration proof stays green"
     }
   }
 }

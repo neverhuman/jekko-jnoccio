@@ -1,15 +1,21 @@
 {
   "owners": {
+    ".github/": "ops",
+    ".gitignore": "agent",
+    ".gitlab-ci.yml": "ops",
     "AGENTS.md": "agent",
+    "Cargo.lock": "workspace",
     "Cargo.toml": "workspace",
     "Justfile": "workspace",
     "README.md": "workspace",
-    ".github/": "ops",
-    ".gitlab-ci.yml": "ops",
-    ".gitignore": "agent",
     "agent/": "agent",
+    "docs/": "standard",
     "ops/": "ops",
-    "src/": "workspace"
+    "ops/git-hooks/": "ops",
+    "rust-toolchain.toml": "ops",
+    "scripts/": "ops",
+    "src/": "workspace",
+    "tests/": "workspace"
   },
   "workspace": "jekko-jnoccio"
 }

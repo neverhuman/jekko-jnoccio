@@ -1,4 +1,16 @@
+# permissions: contents: read
+# concurrency: split-family-child
 image: rust:1.82
+
+workflow:
+  rules:
+    - if: '$CI_PIPELINE_SOURCE == "push"'
+    - if: '$CI_PIPELINE_SOURCE == "merge_request_event"'
+    - if: '$CI_PIPELINE_SOURCE == "web"'
+
+default:
+  timeout: 20m
+  interruptible: true
 
 stages:
   - fast
@@ -6,34 +18,40 @@ stages:
   - test
   - typecheck
   - build
+  - security
   - jankurai
 
 fast:
   stage: fast
-  script:
-    - bash ops/ci/fast.sh
+  resource_group: "$CI_PROJECT_PATH_SLUG-$CI_COMMIT_REF_SLUG"
+  script: ["bash ops/ci/fast.sh"]
 
 check:
   stage: check
-  script:
-    - bash ops/ci/check.sh
+  resource_group: "$CI_PROJECT_PATH_SLUG-$CI_COMMIT_REF_SLUG"
+  script: ["bash ops/ci/check.sh"]
 
 test:
   stage: test
-  script:
-    - bash ops/ci/test.sh
+  resource_group: "$CI_PROJECT_PATH_SLUG-$CI_COMMIT_REF_SLUG"
+  script: ["bash ops/ci/test.sh"]
 
 typecheck:
   stage: typecheck
-  script:
-    - bash ops/ci/typecheck.sh
+  resource_group: "$CI_PROJECT_PATH_SLUG-$CI_COMMIT_REF_SLUG"
+  script: ["bash ops/ci/typecheck.sh"]
 
 build:
   stage: build
-  script:
-    - bash ops/ci/build.sh
+  resource_group: "$CI_PROJECT_PATH_SLUG-$CI_COMMIT_REF_SLUG"
+  script: ["bash ops/ci/build.sh"]
+
+security:
+  stage: security
+  resource_group: "$CI_PROJECT_PATH_SLUG-$CI_COMMIT_REF_SLUG"
+  script: ["bash ops/ci/security.sh"]
 
 jankurai:
   stage: jankurai
-  script:
-    - bash ops/ci/jankurai.sh
+  resource_group: "$CI_PROJECT_PATH_SLUG-$CI_COMMIT_REF_SLUG"
+  script: ["bash ops/ci/jankurai.sh"]
