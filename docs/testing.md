@@ -12,7 +12,7 @@ bash ops/ci/jankurai.sh
 ```
 
 `tests/identity.rs` and `crates/domain/tests/domain_error.rs` are integration
-and property proofs for the split-family manifest identity and typed repair
+and property checks for the split-family manifest identity and typed repair
 surface. The CI wrappers call the same shell lanes as local development.
 
 ## Resource Budget
