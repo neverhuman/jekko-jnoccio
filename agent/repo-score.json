@@ -1,6 +1,6 @@
 {
-  "report_fingerprint": "sha256:13dcb722159e4bfc82768f2acb006024793a8291785d418e10e2f209c2b11cdc",
-  "input_fingerprint": "sha256:b7015f13e69bd8a5c2d890bc82a87b8a8de65ffb9785be4acf8907a1083971c4",
+  "report_fingerprint": "sha256:9384b3ae6e572c2545e9ec88b0597282b107f7c371310d079059a54704140c78",
+  "input_fingerprint": "sha256:23cca17cf4425fffaaeb47f756dd568e80b1148678b654380264d6920b0ae263",
   "policy_fingerprint": "sha256:0000000000000000000000000000000000000000000000000000000000000000",
   "manifest_fingerprints": {
     "owner_map": "sha256:640a2e465093de81da822b9382644609b550f1a1f7bccf7115485285b14db662",
@@ -10,7 +10,7 @@
     "standard_version": "sha256:27e5d92b64d86aacffcf8461e47e810188bca4716aaa6a2d1f74140d65ad220e"
   },
   "dirty_worktree": false,
-  "generated_at": "1781139443",
+  "generated_at": "1781139497",
   "schema_url": "schemas/repo-score.schema.json",
   "standard": "jankurai",
   "standard_version": "0.9.0",
@@ -21,30 +21,26 @@
   "target_stack": "Rust core + TypeScript/React/Vite + PostgreSQL + generated contracts + exception-only Python AI/data service",
   "claimed_conformance_level": "HL3",
   "observed_conformance_level": "HL2",
-  "conformance_decision": "block",
-  "conformance_blockers": [
-    "HLT-002-GENERATED-MUTATION on agent/generated-zones.toml",
-    "HLT-002-GENERATED-MUTATION on agent/generated-zones.toml",
-    "HLT-025-RELEASE-READINESS-GAP on docs/testing.md"
-  ],
+  "conformance_decision": "review",
+  "conformance_blockers": [],
   "repo": ".",
-  "run_id": "1781139443",
-  "started_at": "1781139443",
-  "elapsed_ms": 44,
+  "run_id": "1781139497",
+  "started_at": "1781139497",
+  "elapsed_ms": 235,
   "scope": {
     "mode": "full",
     "paths": []
   },
-  "score": 77,
-  "raw_score": 77,
+  "score": 80,
+  "raw_score": 80,
   "decision": {
     "status": "advisory",
     "minimum_score": 85,
     "passed": true,
-    "hard_findings": 3,
-    "soft_findings": 6,
+    "hard_findings": 0,
+    "soft_findings": 5,
     "ratchet": {
-      "baseline_score": 77,
+      "baseline_score": 80,
       "allowed_drop": 0,
       "passed": false,
       "score_delta": 0,
@@ -57,7 +53,7 @@
     }
   },
   "git": {
-    "head": "53872e3",
+    "head": "0b77b87",
     "base": null,
     "changed_files": 0,
     "mode": "full",
@@ -81,9 +77,7 @@
     "paper_edition": "2026.05-ed8",
     "target_stack": "rust-ts-vite-react-postgres-bounded-python"
   },
-  "caps_applied": [
-    "release-readiness-gap"
-  ],
+  "caps_applied": [],
   "hard_rules": [
     {
       "id": "no-root-agent-instructions",
@@ -294,13 +288,15 @@
     {
       "name": "Contract and boundary integrity",
       "weight": 13,
-      "score": 78,
-      "weighted_points": 10.14,
+      "score": 98,
+      "weighted_points": 12.74,
       "evidence": [
+        "contract surface found",
         "generated contract artifacts found",
         "polyglot boundary layout present",
         "boundary manifest present",
-        "Rust typed boundary helpers found"
+        "Rust typed boundary helpers found",
+        "all contract sources have generated zone entries"
       ],
       "notes": []
     },
@@ -435,14 +431,19 @@
     "has_rendered_ux_lane": true,
     "missing_categories": [],
     "evidence": {
-      "accessibility": [],
+      "accessibility": [
+        "agent/repo-score.json",
+        "agent/repo-score.md"
+      ],
       "api_mocks": [],
       "artifact_backed_proof": [],
       "design_tokens": [],
       "geometry_runtime": [],
       "layout_stability": [],
       "playwright_visual": [],
-      "storybook": [],
+      "storybook": [
+        "agent/repo-score.json"
+      ],
       "visual_review": []
     }
   },
@@ -964,7 +965,7 @@
   "copy_code": {
     "schema_version": "1.1.0",
     "generated_by": "jankurai copy-code",
-    "generated_at": "2026-06-11T00:57:23.149912809+00:00",
+    "generated_at": "2026-06-11T00:58:17.010258152+00:00",
     "repo": ".",
     "auditor_version": "1.5.1",
     "status": "review",
@@ -1002,7 +1003,7 @@
       ]
     },
     "summary": {
-      "files_scanned": 39,
+      "files_scanned": 41,
       "files_considered": 2,
       "active_files": 2,
       "exact_file_classes": 0,
@@ -1326,74 +1327,6 @@
     },
     {
       "severity": "medium",
-      "category": "boundary",
-      "path": "agent/boundaries.toml",
-      "problem": "`Contract and boundary integrity` scored 78 below the standard floor of 85",
-      "agent_fix": "add generated contracts and boundary checks for public APIs, data access, and cross-runtime seams",
-      "evidence": [
-        "generated contract artifacts found",
-        "polyglot boundary layout present",
-        "boundary manifest present",
-        "Rust typed boundary helpers found"
-      ],
-      "check_id": "HLT-007-HANDWRITTEN-CONTRACT:boundary",
-      "hardness": "soft",
-      "confidence": 0.76,
-      "evidence_kind": "contract-manifest",
-      "rerun_command": "just fast",
-      "fingerprint": "sha256:5ef164d06d7c42c89df3c44afe8da6fb358d37ac47a34ba513c860b76d150e3e",
-      "rule_id": "HLT-007-HANDWRITTEN-CONTRACT",
-      "tlr": "Contracts/data",
-      "lane": "contract",
-      "docs_url": "docs/audit-rubric.md#known-vibe-coding-insults",
-      "owner": "agent"
-    },
-    {
-      "severity": "high",
-      "category": "generated",
-      "path": "agent/generated-zones.toml",
-      "problem": "generated zone file `agent/repo-score.json` is missing",
-      "agent_fix": "regenerate `agent/repo-score.json` using the declared command, or remove the zone entry if the file was deleted intentionally",
-      "evidence": [
-        "generated zone integrity violation"
-      ],
-      "check_id": "HLT-002-GENERATED-MUTATION:generated",
-      "hardness": "hard",
-      "confidence": 0.95,
-      "evidence_kind": "contract-manifest",
-      "rerun_command": "just fast",
-      "fingerprint": "sha256:da4c97d8849ada8e584127cefd2a38618b2122ac9f5d9918c4996048a2e47b21",
-      "rule_id": "HLT-002-GENERATED-MUTATION",
-      "tlr": "Contracts/data",
-      "lane": "contract",
-      "docs_url": "agent/JANKURAI_STANDARD.md#generated-zones",
-      "owner": "agent",
-      "line": 1
-    },
-    {
-      "severity": "high",
-      "category": "generated",
-      "path": "agent/generated-zones.toml",
-      "problem": "generated zone file `agent/repo-score.md` is missing",
-      "agent_fix": "regenerate `agent/repo-score.md` using the declared command, or remove the zone entry if the file was deleted intentionally",
-      "evidence": [
-        "generated zone integrity violation"
-      ],
-      "check_id": "HLT-002-GENERATED-MUTATION:generated",
-      "hardness": "hard",
-      "confidence": 0.95,
-      "evidence_kind": "contract-manifest",
-      "rerun_command": "just fast",
-      "fingerprint": "sha256:73f51c07759943db494d8bd45c79b3ea786d6bce0e391f2408f30b6a9de7af8c",
-      "rule_id": "HLT-002-GENERATED-MUTATION",
-      "tlr": "Contracts/data",
-      "lane": "contract",
-      "docs_url": "agent/JANKURAI_STANDARD.md#generated-zones",
-      "owner": "agent",
-      "line": 1
-    },
-    {
-      "severity": "medium",
       "category": "data",
       "path": "db/",
       "problem": "`Data truth and workflow safety` scored 50 below the standard floor of 85",
@@ -1457,62 +1390,9 @@
       "owner": "standard",
       "matched_term": "budget",
       "reason": "unbounded paid work needs budgets and stop conditions"
-    },
-    {
-      "severity": "high",
-      "category": "release",
-      "path": "docs/testing.md",
-      "problem": "release readiness is claimed without complete proof artifacts",
-      "agent_fix": "add launch-gate evidence for security, backups, monitoring, rollback, and abuse controls",
-      "evidence": [
-        "release language found without full launch-gate evidence"
-      ],
-      "check_id": "HLT-025-RELEASE-READINESS-GAP:release",
-      "hardness": "hard",
-      "confidence": 0.88,
-      "evidence_kind": "workflow-command",
-      "rerun_command": "just check",
-      "fingerprint": "sha256:0f21fe749a193e4585d996dc6d063b41115e23a172c09ba76bba9b549301861b",
-      "rule_id": "HLT-025-RELEASE-READINESS-GAP",
-      "tlr": "Verification",
-      "lane": "release",
-      "docs_url": "docs/testing.md",
-      "owner": "standard",
-      "matched_term": "release readiness",
-      "reason": "launch gates need artifact-backed release evidence"
     }
   ],
   "agent_fix_queue": [
-    {
-      "path": "agent/generated-zones.toml",
-      "priority": "high",
-      "rule_id": "HLT-002-GENERATED-MUTATION",
-      "tlr": "Contracts/data",
-      "lane": "contract",
-      "owner": "agent",
-      "task": "regenerate `agent/repo-score.json` using the declared command, or remove the zone entry if the file was deleted intentionally",
-      "why": "generated zone file `agent/repo-score.json` is missing"
-    },
-    {
-      "path": "agent/generated-zones.toml",
-      "priority": "high",
-      "rule_id": "HLT-002-GENERATED-MUTATION",
-      "tlr": "Contracts/data",
-      "lane": "contract",
-      "owner": "agent",
-      "task": "regenerate `agent/repo-score.md` using the declared command, or remove the zone entry if the file was deleted intentionally",
-      "why": "generated zone file `agent/repo-score.md` is missing"
-    },
-    {
-      "path": "agent/boundaries.toml",
-      "priority": "medium",
-      "rule_id": "HLT-007-HANDWRITTEN-CONTRACT",
-      "tlr": "Contracts/data",
-      "lane": "contract",
-      "owner": "agent",
-      "task": "add generated contracts and boundary checks for public APIs, data access, and cross-runtime seams",
-      "why": "`Contract and boundary integrity` scored 78 below the standard floor of 85"
-    },
     {
       "path": "db/",
       "priority": "medium",
@@ -1522,16 +1402,6 @@
       "owner": "tools",
       "task": "move durable truth into migrations, constraints, adapters, and application-owned transactions",
       "why": "`Data truth and workflow safety` scored 50 below the standard floor of 85"
-    },
-    {
-      "path": "docs/testing.md",
-      "priority": "high",
-      "rule_id": "HLT-025-RELEASE-READINESS-GAP",
-      "tlr": "Verification",
-      "lane": "release",
-      "owner": "standard",
-      "task": "add launch-gate evidence for security, backups, monitoring, rollback, and abuse controls",
-      "why": "release readiness is claimed without complete proof artifacts"
     },
     {
       "path": "Justfile",

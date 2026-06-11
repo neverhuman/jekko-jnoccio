@@ -7,15 +7,15 @@
 - Target stack ID: `rust-ts-vite-react-postgres-bounded-python`
 - Target stack: `Rust core + TypeScript/React/Vite + PostgreSQL + generated contracts + exception-only Python AI/data service`
 - Repo: `.`
-- Run ID: `1781139443`
-- Started at: `1781139443`
-- Elapsed: `44` ms
+- Run ID: `1781139497`
+- Started at: `1781139497`
+- Elapsed: `235` ms
 - Scope: `full`
-- Raw score: `77`
-- Final score: `77`
+- Raw score: `80`
+- Final score: `80`
 - Decision: `advisory`
 - Minimum score: `85`
-- Caps applied: `release-readiness-gap`
+- Caps applied: `none`
 
 ## Hard Rule Caps
 
@@ -49,7 +49,7 @@
 | `authz-or-data-isolation-gap` | 78 | no |
 | `input-boundary-gap` | 78 | no |
 | `agent-tool-supply-chain-gap` | 78 | no |
-| `release-readiness-gap` | 80 | yes |
+| `release-readiness-gap` | 80 | no |
 | `missing-rust-property-or-integration-tests` | 82 | no |
 | `no-agent-friendly-exception-pattern` | 76 | no |
 | `missing-agent-readable-docs` | 80 | no |
@@ -88,7 +88,7 @@
 | Dimension | Weight | Score | Weighted | Evidence |
 | --- | ---: | ---: | ---: | --- |
 | Ownership and navigation surface | 13 | 100 | 13.00 | root `AGENTS.md` present; owner map present |
-| Contract and boundary integrity | 13 | 78 | 10.14 | generated contract artifacts found; polyglot boundary layout present |
+| Contract and boundary integrity | 13 | 98 | 12.74 | contract surface found; generated contract artifacts found |
 | Proof lanes and test routing | 12 | 96 | 11.52 | one-command setup/validation lane found; deterministic fast lane found |
 | Security and supply-chain posture | 12 | 80 | 9.60 | lockfile present; secret or dependency scan tooling found |
 | Code shape and semantic surface | 12 | 90 | 10.80 | largest authored code file: crates/domain/src/lib.rs (55 LOC); copy-code advisory classes found: 1 (advisory only, no score impact) |
@@ -181,37 +181,7 @@ No audited runtime boundary reclassifications declared.
    Rerun: `just fast`
    Fingerprint: `sha256:49dd87b3bb47929ee7676db7afb108c2861b56edf9a1ebe40d26535a1b8717f8`
    Evidence: build acceleration markers found, targeted test/build commands found, locked dependency graph present
-3. `medium` `boundary` `agent/boundaries.toml`
-   Rule: `HLT-007-HANDWRITTEN-CONTRACT`
-   Check: `HLT-007-HANDWRITTEN-CONTRACT:boundary` `soft` confidence `0.76`
-   Route: TLR `Contracts/data`, lane `contract`, owner `agent`
-   Docs: `docs/audit-rubric.md#known-vibe-coding-insults`
-   Reason: `Contract and boundary integrity` scored 78 below the standard floor of 85
-   Fix: add generated contracts and boundary checks for public APIs, data access, and cross-runtime seams
-   Rerun: `just fast`
-   Fingerprint: `sha256:5ef164d06d7c42c89df3c44afe8da6fb358d37ac47a34ba513c860b76d150e3e`
-   Evidence: generated contract artifacts found, polyglot boundary layout present, boundary manifest present, Rust typed boundary helpers found
-4. `high` `generated` `agent/generated-zones.toml:1`
-   Rule: `HLT-002-GENERATED-MUTATION`
-   Check: `HLT-002-GENERATED-MUTATION:generated` `hard` confidence `0.95`
-   Route: TLR `Contracts/data`, lane `contract`, owner `agent`
-   Docs: `agent/JANKURAI_STANDARD.md#generated-zones`
-   Reason: generated zone file `agent/repo-score.json` is missing
-   Fix: regenerate `agent/repo-score.json` using the declared command, or remove the zone entry if the file was deleted intentionally
-   Rerun: `just fast`
-   Fingerprint: `sha256:da4c97d8849ada8e584127cefd2a38618b2122ac9f5d9918c4996048a2e47b21`
-   Evidence: generated zone integrity violation
-5. `high` `generated` `agent/generated-zones.toml:1`
-   Rule: `HLT-002-GENERATED-MUTATION`
-   Check: `HLT-002-GENERATED-MUTATION:generated` `hard` confidence `0.95`
-   Route: TLR `Contracts/data`, lane `contract`, owner `agent`
-   Docs: `agent/JANKURAI_STANDARD.md#generated-zones`
-   Reason: generated zone file `agent/repo-score.md` is missing
-   Fix: regenerate `agent/repo-score.md` using the declared command, or remove the zone entry if the file was deleted intentionally
-   Rerun: `just fast`
-   Fingerprint: `sha256:73f51c07759943db494d8bd45c79b3ea786d6bce0e391f2408f30b6a9de7af8c`
-   Evidence: generated zone integrity violation
-6. `medium` `data` `db/`
+3. `medium` `data` `db/`
    Rule: `HLT-006-DIRECT-DB-WRONG-LAYER`
    Check: `HLT-006-DIRECT-DB-WRONG-LAYER:data` `soft` confidence `0.76`
    Route: TLR `Contracts/data`, lane `db`, owner `tools`
@@ -221,7 +191,7 @@ No audited runtime boundary reclassifications declared.
    Rerun: `just fast`
    Fingerprint: `sha256:6dc277f838aa42b508c136f6ba666d602ecefe226bc4c238b24388640ee21f82`
    Evidence: Data truth and workflow safety scored 50
-7. `medium` `observability` `docs/testing.md`
+4. `medium` `observability` `docs/testing.md`
    Rule: `HLT-017-OPAQUE-OBSERVABILITY`
    Check: `HLT-017-OPAQUE-OBSERVABILITY:observability` `soft` confidence `0.76`
    Route: TLR `Repair`, lane `observability`, owner `standard`
@@ -231,7 +201,7 @@ No audited runtime boundary reclassifications declared.
    Rerun: `just score`
    Fingerprint: `sha256:239dbe007e51041332128fdb61472a10a300dd0ac38050e2ee5cdf006358ef47`
    Evidence: ops/observability directory present, agent-friendly exception pattern found
-8. `medium` `release` `docs/testing.md`
+5. `medium` `release` `docs/testing.md`
    Rule: `HLT-026-COST-BUDGET-GAP`
    Check: `HLT-026-COST-BUDGET-GAP:release` `soft` confidence `0.88`
    Route: TLR `Verification`, lane `release`, owner `standard`
@@ -242,17 +212,6 @@ No audited runtime boundary reclassifications declared.
    Rerun: `just check`
    Fingerprint: `sha256:edd248b7afc24b644107205fa5b84a88103ac4b622009ff9f19b779de8798f59`
    Evidence: cost surface found without budget/stop-condition policy
-9. `high` `release` `docs/testing.md`
-   Rule: `HLT-025-RELEASE-READINESS-GAP`
-   Check: `HLT-025-RELEASE-READINESS-GAP:release` `hard` confidence `0.88`
-   Route: TLR `Verification`, lane `release`, owner `standard`
-   Docs: `docs/testing.md`
-   Matched term: `release readiness`
-   Reason: launch gates need artifact-backed release evidence
-   Fix: add launch-gate evidence for security, backups, monitoring, rollback, and abuse controls
-   Rerun: `just check`
-   Fingerprint: `sha256:0f21fe749a193e4585d996dc6d063b41115e23a172c09ba76bba9b549301861b`
-   Evidence: release language found without full launch-gate evidence
 
 ## Policy
 
@@ -262,21 +221,13 @@ No audited runtime boundary reclassifications declared.
 
 ## Agent Fix Queue
 
-1. `high` `HLT-002-GENERATED-MUTATION` `agent/generated-zones.toml` - regenerate `agent/repo-score.json` using the declared command, or remove the zone entry if the file was deleted intentionally
-   Route: `Contracts/data`/`contract`
-2. `high` `HLT-002-GENERATED-MUTATION` `agent/generated-zones.toml` - regenerate `agent/repo-score.md` using the declared command, or remove the zone entry if the file was deleted intentionally
-   Route: `Contracts/data`/`contract`
-3. `medium` `HLT-007-HANDWRITTEN-CONTRACT` `agent/boundaries.toml` - add generated contracts and boundary checks for public APIs, data access, and cross-runtime seams
-   Route: `Contracts/data`/`contract`
-4. `medium` `HLT-006-DIRECT-DB-WRONG-LAYER` `db/` - move durable truth into migrations, constraints, adapters, and application-owned transactions
+1. `medium` `HLT-006-DIRECT-DB-WRONG-LAYER` `db/` - move durable truth into migrations, constraints, adapters, and application-owned transactions
    Route: `Contracts/data`/`db`
-5. `high` `HLT-025-RELEASE-READINESS-GAP` `docs/testing.md` - add launch-gate evidence for security, backups, monitoring, rollback, and abuse controls
-   Route: `Verification`/`release`
-6. `medium` `HLT-018-PERF-CONCURRENCY-DRIFT` `Justfile` - add fast deterministic build/test targets, caches, and narrow proof lanes for agent iteration
+2. `medium` `HLT-018-PERF-CONCURRENCY-DRIFT` `Justfile` - add fast deterministic build/test targets, caches, and narrow proof lanes for agent iteration
    Route: `Verification`/`fast`
-7. `medium` `HLT-026-COST-BUDGET-GAP` `docs/testing.md` - add explicit budgets, quotas, stop conditions, and kill-switch evidence for paid or unbounded operations
+3. `medium` `HLT-026-COST-BUDGET-GAP` `docs/testing.md` - add explicit budgets, quotas, stop conditions, and kill-switch evidence for paid or unbounded operations
    Route: `Verification`/`release`
-8. `medium` `HLT-017-OPAQUE-OBSERVABILITY` `docs/testing.md` - add structured errors, telemetry, and repair receipts that tell the next agent where to rerun proof
+4. `medium` `HLT-017-OPAQUE-OBSERVABILITY` `docs/testing.md` - add structured errors, telemetry, and repair receipts that tell the next agent where to rerun proof
    Route: `Repair`/`observability`
-9. `medium` `HLT-016-SUPPLY-CHAIN-DRIFT` `.github/workflows/jankurai.yml` - wire secret, dependency, provenance, and workflow scans into an operational CI lane
+5. `medium` `HLT-016-SUPPLY-CHAIN-DRIFT` `.github/workflows/jankurai.yml` - wire secret, dependency, provenance, and workflow scans into an operational CI lane
    Route: `Security, secrets, agency`/`security`
