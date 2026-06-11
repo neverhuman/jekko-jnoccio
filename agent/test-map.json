@@ -71,6 +71,10 @@
     "crates/domain/AGENTS.md": {
       "command": "just test",
       "purpose": "verify domain repair guidance stays paired with tests"
+    },
+    "crates/domain/Cargo.toml": {
+      "command": "just test",
+      "purpose": "verify domain crate manifest stays compiled"
     }
   }
 }
