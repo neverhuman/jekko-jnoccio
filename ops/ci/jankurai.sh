@@ -2,11 +2,12 @@
 set -euo pipefail
 ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")/../.." && pwd)"
 cd "$ROOT"
+export PATH="${HOME}/.local/bin:${HOME}/.cargo/bin:${PATH}"
 
 JANKURAI_VERSION="1.6.1"
 JANKURAI_REV="c7360a88b1e1869626df0450f1e28221047832db"
 
-if ! command -v jankurai >/dev/null 2>&1 || ! jankurai --version | grep -q "jankurai ${JANKURAI_VERSION}"; then
+if ! command -v jankurai >/dev/null 2>&1; then
   cargo install --root "${HOME}/.local" --git https://github.com/neverhuman/jankurai --rev "${JANKURAI_REV}" --locked jankurai
   export PATH="${HOME}/.local/bin:${PATH}"
 fi
@@ -16,9 +17,9 @@ if ! command -v jq >/dev/null 2>&1; then
   exit 1
 fi
 
-jankurai --version | grep -q "jankurai ${JANKURAI_VERSION}"
 mkdir -p agent
 jankurai audit . --mode advisory --json agent/repo-score.json --md agent/repo-score.md
+jq -e --arg version "${JANKURAI_VERSION}" '.auditor_version == $version' agent/repo-score.json >/dev/null
 
 blockers="$(jq '(.conformance_blockers // []) | length' agent/repo-score.json)"
 hard_findings="$(jq '(.hard_findings // .decision.hard_findings // ([.findings[]? | select(.hardness == "hard" or .severity == "high" or .severity == "critical")] | length))' agent/repo-score.json)"
