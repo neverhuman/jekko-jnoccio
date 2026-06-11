@@ -59,6 +59,14 @@
     "tests/": {
       "command": "just test",
       "purpose": "verify integration proof stays green"
+    },
+    "CHANGELOG.md": {
+      "command": "just fast",
+      "purpose": "verify release notes stay routed"
+    },
+    "crates/domain/": {
+      "command": "just test",
+      "purpose": "verify the domain error surface stays compiled"
     }
   }
 }

@@ -15,7 +15,9 @@
     "rust-toolchain.toml": "ops",
     "scripts/": "ops",
     "src/": "workspace",
-    "tests/": "workspace"
+    "tests/": "workspace",
+    "CHANGELOG.md": "workspace",
+    "crates/domain/": "workspace"
   },
   "workspace": "jekko-jnoccio"
 }

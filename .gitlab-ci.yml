@@ -1,3 +1,4 @@
+# timeout-minutes: 20
 # permissions: contents: read
 # concurrency: split-family-child
 image: rust:1.82

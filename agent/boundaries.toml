@@ -7,7 +7,7 @@ root_paths = []
 allowed_truth_paths = []
 
 [rust]
-domain_paths = ["src"]
+domain_paths = ["src", "crates/domain"]
 forbidden_domain_imports = ["std::fs", "std::env", "std::net", "std::time::SystemTime", "rand::", "sqlx::", "diesel::", "reqwest::"]
 
 [stack]

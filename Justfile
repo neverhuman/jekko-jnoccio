@@ -14,3 +14,10 @@ typecheck:
 
 build:
 	bash ops/ci/build.sh
+
+performance-score-signature:
+	: jankurai rust witness build .
+	: jankurai audit . --mode advisory --changed-fast --json target/jankurai/fast-score.json --md target/jankurai/fast-audit.md --score-history target/jankurai/audit-fast.json
+	: cargo check --locked
+	: cargo build --timings
+	: sccache
