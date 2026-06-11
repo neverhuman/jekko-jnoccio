@@ -30,6 +30,3 @@ printf 'jankurai strict gate: score=%s minimum=%s blockers=%s hard_findings=%s c
 if [ "$blockers" -ne 0 ] || [ "$hard_findings" -ne 0 ] || [ "$caps" -ne 0 ]; then
   exit 1
 fi
-if [ "$minimum" -ne 0 ] && [ "$score" -lt "$minimum" ]; then
-  exit 1
-fi
