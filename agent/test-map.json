@@ -1,0 +1,40 @@
+{
+  "tests": {
+    "AGENTS.md": {
+      "command": "just fast",
+      "purpose": "verify the repo instructions stay visible"
+    },
+    "Cargo.toml": {
+      "command": "just fast",
+      "purpose": "verify the package manifest stays parseable"
+    },
+    "Justfile": {
+      "command": "just fast",
+      "purpose": "verify the lane wrapper stays runnable"
+    },
+    "README.md": {
+      "command": "just fast",
+      "purpose": "verify the repo README stays in sync"
+    },
+    ".github/workflows/": {
+      "command": "just fast",
+      "purpose": "verify workflow dispatch stays script-only"
+    },
+    ".gitlab-ci.yml": {
+      "command": "just fast",
+      "purpose": "verify the GitLab pipeline stays dispatch-only"
+    },
+    "agent/": {
+      "command": "just fast",
+      "purpose": "verify the Jankurai metadata bundle stays parseable"
+    },
+    "ops/ci/": {
+      "command": "just fast",
+      "purpose": "verify the shell lane scripts stay runnable"
+    },
+    "src/": {
+      "command": "just test",
+      "purpose": "verify the crate body and smoke test stay green"
+    }
+  }
+}

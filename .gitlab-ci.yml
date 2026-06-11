@@ -1,0 +1,39 @@
+image: rust:1.82
+
+stages:
+  - fast
+  - check
+  - test
+  - typecheck
+  - build
+  - jankurai
+
+fast:
+  stage: fast
+  script:
+    - bash ops/ci/fast.sh
+
+check:
+  stage: check
+  script:
+    - bash ops/ci/check.sh
+
+test:
+  stage: test
+  script:
+    - bash ops/ci/test.sh
+
+typecheck:
+  stage: typecheck
+  script:
+    - bash ops/ci/typecheck.sh
+
+build:
+  stage: build
+  script:
+    - bash ops/ci/build.sh
+
+jankurai:
+  stage: jankurai
+  script:
+    - bash ops/ci/jankurai.sh

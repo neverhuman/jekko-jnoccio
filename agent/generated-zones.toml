@@ -1,0 +1,11 @@
+[[zone]]
+command = "bash ops/ci/jankurai.sh"
+path = "agent/repo-score.json"
+read_only = false
+source = "installed jankurai binary"
+
+[[zone]]
+command = "bash ops/ci/jankurai.sh"
+path = "agent/repo-score.md"
+read_only = false
+source = "installed jankurai binary"

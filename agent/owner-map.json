@@ -1,0 +1,15 @@
+{
+  "owners": {
+    "AGENTS.md": "agent",
+    "Cargo.toml": "workspace",
+    "Justfile": "workspace",
+    "README.md": "workspace",
+    ".github/": "ops",
+    ".gitlab-ci.yml": "ops",
+    ".gitignore": "agent",
+    "agent/": "agent",
+    "ops/": "ops",
+    "src/": "workspace"
+  },
+  "workspace": "jekko-jnoccio"
+}
