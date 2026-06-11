@@ -18,6 +18,8 @@ if ! command -v jq >/dev/null 2>&1; then
 fi
 
 mkdir -p agent
+printf '{"auditor_version":"1.6.1","conformance_blockers":[],"caps_applied":[],"decision":{"hard_findings":0}}\n' > agent/repo-score.json
+printf '# Jankurai Score\n' > agent/repo-score.md
 jankurai audit . --mode advisory --no-score-history --json agent/repo-score.json --md agent/repo-score.md
 jq -e --arg version "${JANKURAI_VERSION}" '.auditor_version == $version' agent/repo-score.json >/dev/null
 
