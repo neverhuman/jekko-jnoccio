@@ -17,10 +17,12 @@ if ! command -v jq >/dev/null 2>&1; then
   exit 1
 fi
 
-mkdir -p agent
+mkdir -p agent target/jankurai
 printf '{"auditor_version":"1.6.1","conformance_blockers":[],"caps_applied":[],"decision":{"hard_findings":0}}\n' > agent/repo-score.json
 printf '# Jankurai Score\n' > agent/repo-score.md
-jankurai audit . --mode advisory --no-score-history --json agent/repo-score.json --md agent/repo-score.md
+jankurai audit . --mode advisory --no-score-history --json target/jankurai/repo-score.json --md target/jankurai/repo-score.md
+cp target/jankurai/repo-score.json agent/repo-score.json
+cp target/jankurai/repo-score.md agent/repo-score.md
 jq -e --arg version "${JANKURAI_VERSION}" '.auditor_version == $version' agent/repo-score.json >/dev/null
 
 blockers="$(jq '(.conformance_blockers // []) | length' agent/repo-score.json)"
