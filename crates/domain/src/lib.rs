@@ -23,7 +23,9 @@ impl DomainError {
     /// Human-readable repair hint for agent reruns.
     pub fn repair_hint(&self) -> &'static str {
         match self {
-            Self::IdentityDrift => "rerun the split-family manifest check and restore identity constants",
+            Self::IdentityDrift => {
+                "rerun the split-family manifest check and restore identity constants"
+            }
         }
     }
 
