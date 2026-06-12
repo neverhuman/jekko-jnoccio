@@ -91,13 +91,13 @@ domain-test-fast:
 
 # jankurai:proof HLT-018-PERF-CONCURRENCY-DRIFT parallel=1 cache=turbo-build narrow-targets=true
 score:
-	mkdir -p target/jankurai
-	jankurai audit . --mode advisory --json target/jankurai/repo-score.json --md target/jankurai/repo-score.md --score-history target/jankurai/score-history.jsonl --score-history-csv target/jankurai/score-history.csv
+	mkdir -p .jankurai
+	jankurai audit . --mode advisory --json .jankurai/repo-score.json --md .jankurai/repo-score.md --score-history .jankurai/score-history.jsonl --score-history-csv .jankurai/score-history.csv
 
 # jankurai:proof HLT-018-PERF-CONCURRENCY-DRIFT parallel=1 cache=turbo-build narrow-targets=true
 score-fast:
-	mkdir -p target/jankurai
-	jankurai audit . --mode advisory --full --no-score-history --json target/jankurai/repo-score.json --md target/jankurai/repo-score.md
+	mkdir -p .jankurai
+	jankurai audit . --mode advisory --full --json .jankurai/repo-score.json --md .jankurai/repo-score.md --score-history .jankurai/score-history.jsonl --score-history-csv .jankurai/score-history.csv
 
 # jankurai:proof HLT-018-PERF-CONCURRENCY-DRIFT parallel=1 cache=turbo-build narrow-targets=true
 performance-score-signature:

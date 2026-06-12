@@ -7,9 +7,9 @@
 - Target stack ID: `rust-ts-vite-react-postgres-bounded-python`
 - Target stack: `Rust core + TypeScript/React/Vite + PostgreSQL + generated contracts + exception-only Python AI/data service`
 - Repo: `.`
-- Run ID: `1781216454`
-- Started at: `1781216454`
-- Elapsed: `51` ms
+- Run ID: `1781223440`
+- Started at: `1781223440`
+- Elapsed: `195` ms
 - Scope: `full`
 - Raw score: `86`
 - Final score: `86`
@@ -88,14 +88,14 @@
 | Dimension | Weight | Score | Weighted | Evidence |
 | --- | ---: | ---: | ---: | --- |
 | Ownership and navigation surface | 13 | 100 | 13.00 | root `AGENTS.md` present; owner map present |
-| Contract and boundary integrity | 13 | 93 | 12.09 | generated contract artifacts found; polyglot boundary layout present |
+| Contract and boundary integrity | 13 | 100 | 13.00 | contract surface found; generated contract artifacts found |
 | Proof lanes and test routing | 12 | 100 | 12.00 | one-command setup/validation lane found; deterministic fast lane found |
 | Security and supply-chain posture | 12 | 80 | 9.60 | lockfile present; secret or dependency scan tooling found |
 | Code shape and semantic surface | 12 | 90 | 10.80 | largest authored code file: crates/domain/src/lib.rs (57 LOC); copy-code advisory classes found: 1 (advisory only, no score impact) |
 | Data truth and workflow safety | 8 | 85 | 6.80 | database surface present; structured db boundary manifest present |
 | Observability and repair evidence | 8 | 85 | 6.80 | ops/observability directory present; repair queue schema is present |
 | Context economy and agent instructions | 7 | 93 | 6.51 | root `AGENTS.md` present; root `AGENTS.md` stays short |
-| Jankurai tool adoption and CI replacement | 7 | 10 | 0.70 | control-plane files present; applicable=14 |
+| Jankurai tool adoption and CI replacement | 7 | 10 | 0.70 | control-plane files present; applicable=15 |
 | Python containment and polyglot hygiene | 4 | 100 | 4.00 | no Python files in scope |
 | Build speed signals | 4 | 80 | 3.20 | build acceleration markers found; targeted test/build commands found |
 
@@ -125,12 +125,12 @@
 ## Tool Adoption
 
 - Control plane present: `true`
-- Applicable tools: `14`
+- Applicable tools: `15`
 - Configured: `0`
 - CI evidence: `0`
 - Artifact verified: `0`
 - Replaced count: `0`
-- Missing CI evidence: `audit-ci, proof-routing, proofbind, proofmark-rust, copy-code, security, ci-bad-behavior, git-bad-behavior, release-bad-behavior, contract-drift, rust-witness, authz-matrix, agent-tool-supply, release-readiness`
+- Missing CI evidence: `audit-ci, proof-routing, proofbind, proofmark-rust, copy-code, security, ci-bad-behavior, git-bad-behavior, release-bad-behavior, contract-drift, rust-witness, authz-matrix, agent-tool-supply, release-readiness, cost-budget`
 
 | Tool | Category | Mode | Status | Replaced | Artifacts |
 | --- | --- | --- | --- | --- | --- |
@@ -153,7 +153,7 @@
 | `input-boundary` | `security` | `auto` | `not_applicable` | `manual unsafe sink review` | `.jankurai/repo-score.json, .jankurai/repo-score.md` |
 | `agent-tool-supply` | `security` | `auto` | `missing` | `manual MCP/tool trust review` | `.jankurai/repo-score.json, .jankurai/repo-score.md` |
 | `release-readiness` | `release` | `auto` | `missing` | `manual launch checklist` | `.jankurai/repo-score.json, .jankurai/repo-score.md` |
-| `cost-budget` | `release` | `auto` | `not_applicable` | `manual spend review` | `.jankurai/repo-score.json, .jankurai/repo-score.md` |
+| `cost-budget` | `release` | `auto` | `missing` | `manual spend review` | `.jankurai/repo-score.json, .jankurai/repo-score.md` |
 
 ## Boundary Reclassifications
 
@@ -181,6 +181,17 @@ No audited runtime boundary reclassifications declared.
    Rerun: `just fast`
    Fingerprint: `sha256:2f2531223d7f7036c20d44b58cd52e64aa53ffd6cb85e01e541c1feff0c09cb2`
    Evidence: build acceleration markers found, targeted test/build commands found, locked dependency graph present, CI cache hint found
+3. `medium` `release` `docs/testing.md`
+   Rule: `HLT-026-COST-BUDGET-GAP`
+   Check: `HLT-026-COST-BUDGET-GAP:release` `soft` confidence `0.88`
+   Route: TLR `Verification`, lane `release`, owner `standard`
+   Docs: `docs/testing.md`
+   Matched term: `budget`
+   Reason: unbounded paid work needs budgets and stop conditions
+   Fix: add explicit budgets, quotas, stop conditions, and kill-switch evidence for paid or unbounded operations
+   Rerun: `just check`
+   Fingerprint: `sha256:edd248b7afc24b644107205fa5b84a88103ac4b622009ff9f19b779de8798f59`
+   Evidence: cost surface found without budget/stop-condition policy
 
 ## Policy
 
@@ -192,5 +203,7 @@ No audited runtime boundary reclassifications declared.
 
 1. `medium` `HLT-018-PERF-CONCURRENCY-DRIFT` `Justfile` - add fast deterministic build/test targets, caches, and narrow proof lanes for agent iteration
    Route: `Verification`/`fast`
-2. `medium` `HLT-016-SUPPLY-CHAIN-DRIFT` `.github/workflows/jankurai.yml` - wire secret, dependency, provenance, and workflow scans into an operational CI lane
+2. `medium` `HLT-026-COST-BUDGET-GAP` `docs/testing.md` - add explicit budgets, quotas, stop conditions, and kill-switch evidence for paid or unbounded operations
+   Route: `Verification`/`release`
+3. `medium` `HLT-016-SUPPLY-CHAIN-DRIFT` `.github/workflows/jankurai.yml` - wire secret, dependency, provenance, and workflow scans into an operational CI lane
    Route: `Security, secrets, agency`/`security`

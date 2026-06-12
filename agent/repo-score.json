@@ -1,7 +1,7 @@
 {
-  "report_fingerprint": "sha256:09f6fee0e96e923f1f3edb998f34874319dd0fcb44d0c7b4b43092801b19709c",
-  "input_fingerprint": "sha256:8eee60693ce8744560cff6b8416b083dac167e77bf07c0f0b3a9b3626b2cdd5e",
-  "policy_fingerprint": "sha256:0000000000000000000000000000000000000000000000000000000000000000",
+  "report_fingerprint": "sha256:d1280afaeb3b9dea99055ceed7d59025d7a5382744cdfd29fe27677f189de481",
+  "input_fingerprint": "sha256:e66f280a02d666f2667a76e2035fa7a00feca63d291909ad0cf7b512e62b6e6a",
+  "policy_fingerprint": "sha256:d3d4e9216bf89c824b97191fc7df61ec421867dd5fd0d7a6c3fb33527d0b403a",
   "manifest_fingerprints": {
     "owner_map": "sha256:134fe5b739478544897b9f4ef60304ae95ed48a159a9b9c422adaf921f0c639f",
     "test_map": "sha256:25492933acc3b0cc06281231cc5ad5f765fa269c07e7301f7201766f3aba453c",
@@ -10,7 +10,7 @@
     "standard_version": "sha256:27e5d92b64d86aacffcf8461e47e810188bca4716aaa6a2d1f74140d65ad220e"
   },
   "dirty_worktree": true,
-  "generated_at": "1781216454",
+  "generated_at": "1781223440",
   "schema_url": "schemas/repo-score.schema.json",
   "standard": "jankurai",
   "standard_version": "0.9.0",
@@ -24,9 +24,9 @@
   "conformance_decision": "pass",
   "conformance_blockers": [],
   "repo": ".",
-  "run_id": "1781216454",
-  "started_at": "1781216454",
-  "elapsed_ms": 51,
+  "run_id": "1781223440",
+  "started_at": "1781223440",
+  "elapsed_ms": 195,
   "scope": {
     "mode": "full",
     "paths": []
@@ -38,7 +38,7 @@
     "minimum_score": 85,
     "passed": true,
     "hard_findings": 0,
-    "soft_findings": 2,
+    "soft_findings": 3,
     "ratchet": {
       "baseline_score": 86,
       "allowed_drop": 0,
@@ -53,7 +53,7 @@
     }
   },
   "git": {
-    "head": "cce0450",
+    "head": "8f24d4b",
     "base": null,
     "changed_files": 0,
     "mode": "full",
@@ -290,14 +290,16 @@
     {
       "name": "Contract and boundary integrity",
       "weight": 13,
-      "score": 93,
-      "weighted_points": 12.09,
+      "score": 100,
+      "weighted_points": 13.0,
       "evidence": [
+        "contract surface found",
         "generated contract artifacts found",
         "polyglot boundary layout present",
         "boundary manifest present",
         "machine-readable schemas present",
         "Rust typed boundary helpers found",
+        "all contract sources have generated zone entries",
         "schema/tooling contract posture is clean"
       ],
       "notes": []
@@ -400,7 +402,7 @@
       "weighted_points": 0.7,
       "evidence": [
         "control-plane files present",
-        "applicable=14",
+        "applicable=15",
         "configured=0",
         "ci_evidence=0",
         "artifact_verified=0"
@@ -444,20 +446,25 @@
     "has_rendered_ux_lane": true,
     "missing_categories": [],
     "evidence": {
-      "accessibility": [],
+      "accessibility": [
+        "agent/repo-score.json",
+        "agent/repo-score.md"
+      ],
       "api_mocks": [],
       "artifact_backed_proof": [],
       "design_tokens": [],
       "geometry_runtime": [],
       "layout_stability": [],
       "playwright_visual": [],
-      "storybook": [],
+      "storybook": [
+        "agent/repo-score.json"
+      ],
       "visual_review": []
     }
   },
   "tool_adoption": {
     "control_plane_present": true,
-    "applicable_count": 14,
+    "applicable_count": 15,
     "configured_count": 0,
     "ci_evidence_count": 0,
     "artifact_verified_count": 0,
@@ -900,15 +907,18 @@
         "id": "cost-budget",
         "category": "release",
         "mode": "auto",
-        "applicable": false,
-        "status": "not_applicable",
+        "applicable": true,
+        "status": "missing",
         "replaced_tools": [
           "manual spend review"
         ],
         "evidence": [
           "mode=auto"
         ],
-        "missing": [],
+        "missing": [
+          "agent/tool-adoption.toml entry",
+          "CI command evidence"
+        ],
         "local_command": "jankurai audit . --mode advisory --json .jankurai/repo-score.json --md .jankurai/repo-score.md",
         "ci_command": "jankurai audit . --mode ratchet --baseline target/jankurai/accepted-baseline.json --json target/jankurai/repo-score.json --md target/jankurai/repo-score.md",
         "artifact_paths": [
@@ -918,7 +928,7 @@
       }
     ],
     "evidence": {
-      "applicable_count": 14,
+      "applicable_count": 15,
       "applicable_tools": [
         "audit-ci",
         "proof-routing",
@@ -933,7 +943,8 @@
         "rust-witness",
         "authz-matrix",
         "agent-tool-supply",
-        "release-readiness"
+        "release-readiness",
+        "cost-budget"
       ],
       "artifact_verified_count": 0,
       "artifact_verified_tools": [],
@@ -958,7 +969,8 @@
       "rust-witness",
       "authz-matrix",
       "agent-tool-supply",
-      "release-readiness"
+      "release-readiness",
+      "cost-budget"
     ]
   },
   "security_evidence": {},
@@ -968,7 +980,7 @@
   "copy_code": {
     "schema_version": "1.1.0",
     "generated_by": "jankurai copy-code",
-    "generated_at": "2026-06-11T22:20:54.349412579+00:00",
+    "generated_at": "2026-06-12T00:17:20.782666084+00:00",
     "repo": ".",
     "auditor_version": "1.6.10",
     "status": "review",
@@ -1006,7 +1018,7 @@
       ]
     },
     "summary": {
-      "files_scanned": 48,
+      "files_scanned": 49,
       "files_considered": 2,
       "active_files": 2,
       "exact_file_classes": 0,
@@ -1339,6 +1351,29 @@
       "lane": "fast",
       "docs_url": "docs/testing.md",
       "owner": "workspace"
+    },
+    {
+      "severity": "medium",
+      "category": "release",
+      "path": "docs/testing.md",
+      "problem": "cost or spend-risk surface lacks budget proof",
+      "agent_fix": "add explicit budgets, quotas, stop conditions, and kill-switch evidence for paid or unbounded operations",
+      "evidence": [
+        "cost surface found without budget/stop-condition policy"
+      ],
+      "check_id": "HLT-026-COST-BUDGET-GAP:release",
+      "hardness": "soft",
+      "confidence": 0.88,
+      "evidence_kind": "policy-manifest",
+      "rerun_command": "just check",
+      "fingerprint": "sha256:edd248b7afc24b644107205fa5b84a88103ac4b622009ff9f19b779de8798f59",
+      "rule_id": "HLT-026-COST-BUDGET-GAP",
+      "tlr": "Verification",
+      "lane": "release",
+      "docs_url": "docs/testing.md",
+      "owner": "standard",
+      "matched_term": "budget",
+      "reason": "unbounded paid work needs budgets and stop conditions"
     }
   ],
   "agent_fix_queue": [
@@ -1351,6 +1386,16 @@
       "owner": "workspace",
       "task": "add fast deterministic build/test targets, caches, and narrow proof lanes for agent iteration",
       "why": "`Build speed signals` scored 80 below the standard floor of 85"
+    },
+    {
+      "path": "docs/testing.md",
+      "priority": "medium",
+      "rule_id": "HLT-026-COST-BUDGET-GAP",
+      "tlr": "Verification",
+      "lane": "release",
+      "owner": "standard",
+      "task": "add explicit budgets, quotas, stop conditions, and kill-switch evidence for paid or unbounded operations",
+      "why": "cost or spend-risk surface lacks budget proof"
     },
     {
       "path": ".github/workflows/jankurai.yml",

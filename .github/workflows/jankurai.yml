@@ -31,7 +31,26 @@ jobs:
           key: ${{ runner.os }}-jekko-jnoccio-jankurai-${{ hashFiles('Cargo.lock', 'Cargo.toml', 'crates/domain/Cargo.toml') }}
       - name: Jankurai command receipts
         run: |
-          : "jankurai audit . --mode advisory --json agent/repo-score.json --md agent/repo-score.md"
+          : "jankurai audit . --mode advisory --json .jankurai/repo-score.json --md .jankurai/repo-score.md --score-history .jankurai/score-history.jsonl --score-history-csv .jankurai/score-history.csv"
           : "jankurai proof . --changed-from origin/main --out .jankurai/proof-plan.json --md .jankurai/proof-plan.md"
           : "jankurai copy-code . --json .jankurai/copy-code.json --md .jankurai/copy-code.md"
-      - run: bash ops/ci/jankurai.sh
+      - name: Run Jankurai audit
+        run: bash ops/ci/jankurai.sh
+      - name: Upload Jankurai score artifacts
+        if: always()
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4.6.2
+        with:
+          name: jekko-jnoccio-jankurai-${{ github.sha }}
+          if-no-files-found: error
+          retention-days: 14
+          path: |
+            .jankurai/repo-score.json
+            .jankurai/repo-score.md
+            .jankurai/score-history.jsonl
+            .jankurai/score-history.csv
+            agent/repo-score.json
+            agent/repo-score.md
+            target/jankurai/repo-score.json
+            target/jankurai/repo-score.md
+            target/jankurai/score-history.jsonl
+            target/jankurai/score-history.csv
