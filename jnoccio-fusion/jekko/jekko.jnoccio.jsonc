@@ -1,0 +1,50 @@
+{
+  "model": "jnoccio/jnoccio-fusion",
+  "small_model": "jnoccio/jnoccio-fusion",
+  "provider": {
+    "jnoccio": {
+      "name": "Jnoccio",
+      "npm": "@ai-sdk/openai-compatible",
+      "api": "http://127.0.0.1:4317/v1",
+      "env": [],
+      "options": {
+        "baseURL": "http://127.0.0.1:4317/v1",
+        "apiKey": "jnoccio-local",
+        "timeout": 900000,
+        "chunkTimeout": 120000,
+        "includeUsage": true
+      },
+      "models": {
+        "jnoccio-fusion": {
+          "name": "🤥 Jnoccio (recommended)",
+          "id": "jnoccio-fusion",
+          "reasoning": true,
+          "temperature": true,
+          "tool_call": true,
+          "interleaved": { "field": "reasoning_content" },
+          "limit": {
+            "context": 128000,
+            "output": 32000
+          },
+          "cost": {
+            "input": 0,
+            "output": 0
+          },
+          "modalities": {
+            "input": ["text"],
+            "output": ["text"]
+          }
+        }
+      }
+    }
+  },
+  "agent": {
+    "build": { "model": "jnoccio/jnoccio-fusion" },
+    "plan": { "model": "jnoccio/jnoccio-fusion" },
+    "general": { "model": "jnoccio/jnoccio-fusion" },
+    "explore": { "model": "jnoccio/jnoccio-fusion" },
+    "title": { "model": "jnoccio/jnoccio-fusion" },
+    "summary": { "model": "jnoccio/jnoccio-fusion" },
+    "compaction": { "model": "jnoccio/jnoccio-fusion" }
+  }
+}

@@ -1,19 +1,6 @@
-minimum_score = 85
-fail_on = ["critical", "high"]
-advisory_on = ["medium", "low"]
+schema_version = "1.0.0"
 
-[history]
-max_rows = 500
-max_bytes = 1048576
-dedupe = "consecutive-equivalent"
-mirror_env = "JANKURAI_HISTORY_MIRROR"
-mirror_required = false
-mirror_max_rows = 5000
+cost_surface = []
 
-[scan]
-excluded_paths = ["tips/", ".jankurai/"]
-
-[smart_scan]
-# After a clean full scan, only scan git-status changed files by default.
-full_scan_interval_secs = 3600
-roulette_rate = 0.10
+[dead_language]
+allow_terms = ["fallback"]

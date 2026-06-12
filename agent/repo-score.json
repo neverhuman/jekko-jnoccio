@@ -1,16 +1,17 @@
 {
-  "report_fingerprint": "sha256:d1280afaeb3b9dea99055ceed7d59025d7a5382744cdfd29fe27677f189de481",
-  "input_fingerprint": "sha256:e66f280a02d666f2667a76e2035fa7a00feca63d291909ad0cf7b512e62b6e6a",
-  "policy_fingerprint": "sha256:d3d4e9216bf89c824b97191fc7df61ec421867dd5fd0d7a6c3fb33527d0b403a",
+  "report_fingerprint": "sha256:2f42ff772d3d75987769c0e23b548108d32051d02c8624b76d370472832c7cb1",
+  "input_fingerprint": "sha256:dcef0a601add5f46ec155f52f7b3b92c8da90fde9a5fc65e0cb7e20a2be6273e",
+  "policy_fingerprint": "sha256:42145a1d85e43e5438d055dd001a037f1cd13bd98adcf912fd5ddc0e7a5c9231",
   "manifest_fingerprints": {
-    "owner_map": "sha256:134fe5b739478544897b9f4ef60304ae95ed48a159a9b9c422adaf921f0c639f",
-    "test_map": "sha256:25492933acc3b0cc06281231cc5ad5f765fa269c07e7301f7201766f3aba453c",
-    "generated_zones": "sha256:4abfb477fffea6a8188770acedaa56ead313947c05c107b74a5644345354723e",
-    "boundaries": "sha256:9e6ae6cb13a4b2160f2831b4d872236ead279a02a9b316b6fa8a06b5c4296723",
+    "owner_map": "sha256:73f6ec04c23e7ed7ad8b7042fe99df1b0c8b8f9a6be025df8512cc9be9fbb4bc",
+    "test_map": "sha256:a075ce1906ec5b0bbd45c88ebdace15dd5e1e535f244646d77c2426958e7072b",
+    "generated_zones": "sha256:5fe64fb9ed205880813ac22f03d735a837fa350cb8bb1dda9d306974b6d9f079",
+    "boundaries": "sha256:2484a7c19b3a44402c72081e2e6bcf0d74bcc1125d073f07a7392c250068b581",
+    "proof_lanes": "sha256:814bb136a5b3156828133b2ea84b438315c1347841369fa5eb5c067daf66a067",
     "standard_version": "sha256:27e5d92b64d86aacffcf8461e47e810188bca4716aaa6a2d1f74140d65ad220e"
   },
   "dirty_worktree": true,
-  "generated_at": "1781223440",
+  "generated_at": "1781228575",
   "schema_url": "schemas/repo-score.schema.json",
   "standard": "jankurai",
   "standard_version": "0.9.0",
@@ -20,29 +21,29 @@
   "target_stack_id": "rust-ts-vite-react-postgres-bounded-python",
   "target_stack": "Rust core + TypeScript/React/Vite + PostgreSQL + generated contracts + exception-only Python AI/data service",
   "claimed_conformance_level": "HL3",
-  "observed_conformance_level": "HL3",
-  "conformance_decision": "pass",
+  "observed_conformance_level": "HL2",
+  "conformance_decision": "review",
   "conformance_blockers": [],
   "repo": ".",
-  "run_id": "1781223440",
-  "started_at": "1781223440",
-  "elapsed_ms": 195,
+  "run_id": "1781228575",
+  "started_at": "1781228575",
+  "elapsed_ms": 4359,
   "scope": {
     "mode": "full",
     "paths": []
   },
-  "score": 86,
-  "raw_score": 86,
+  "score": 77,
+  "raw_score": 77,
   "decision": {
     "status": "advisory",
     "minimum_score": 85,
     "passed": true,
     "hard_findings": 0,
-    "soft_findings": 3,
+    "soft_findings": 4,
     "ratchet": {
-      "baseline_score": 86,
+      "baseline_score": 77,
       "allowed_drop": 0,
-      "passed": true,
+      "passed": false,
       "score_delta": 0,
       "baseline_report_fingerprint": "sha256:0000000000000000000000000000000000000000000000000000000000000000",
       "baseline_input_fingerprint": "sha256:0000000000000000000000000000000000000000000000000000000000000000",
@@ -53,7 +54,7 @@
     }
   },
   "git": {
-    "head": "8f24d4b",
+    "head": "929376e",
     "base": null,
     "changed_files": 0,
     "mode": "full",
@@ -62,14 +63,8 @@
   "policy": {
     "path": "./agent/audit-policy.toml",
     "minimum_score": 85,
-    "fail_on": [
-      "critical",
-      "high"
-    ],
-    "advisory_on": [
-      "medium",
-      "low"
-    ],
+    "fail_on": [],
+    "advisory_on": [],
     "mode": "advisory",
     "standard_version": "0.9.0",
     "auditor_version": "1.6.10",
@@ -268,22 +263,20 @@
     {
       "name": "Ownership and navigation surface",
       "weight": 13,
-      "score": 100,
-      "weighted_points": 13.0,
+      "score": 86,
+      "weighted_points": 11.18,
       "evidence": [
         "root `AGENTS.md` present",
         "owner map present",
         "test/proof routing map present",
         "local `AGENTS.md` file(s)",
-        "reference-profile cell `domain` is canonical",
-        "reference-profile cell `domain` has local AGENTS.md guidance",
-        "reference-profile cell `db` is canonical",
-        "reference-profile cell `db` has local AGENTS.md guidance",
         "reference-profile cell `ops` is canonical",
         "reference-profile cell `ops` has local AGENTS.md guidance",
         "root `README.md` routes to workspace layout",
         "owner map covers audited paths",
-        "test map covers audited paths"
+        "test map covers audited paths",
+        "authored code file exceeds 500 LOC",
+        "authored code file exceeds 1000 LOC"
       ],
       "notes": []
     },
@@ -295,7 +288,6 @@
       "evidence": [
         "contract surface found",
         "generated contract artifacts found",
-        "polyglot boundary layout present",
         "boundary manifest present",
         "machine-readable schemas present",
         "Rust typed boundary helpers found",
@@ -307,12 +299,11 @@
     {
       "name": "Proof lanes and test routing",
       "weight": 12,
-      "score": 100,
-      "weighted_points": 12.0,
+      "score": 96,
+      "weighted_points": 11.52,
       "evidence": [
         "one-command setup/validation lane found",
         "deterministic fast lane found",
-        "test runner present in automation surface",
         "GitHub workflow files present",
         "test/proof routing map present",
         "jankurai audit lane found in CI",
@@ -334,7 +325,7 @@
         "workflow linting tooling found",
         "security lane present",
         "agent-readiness audit gate found in CI",
-        "rust bad-behavior advisory signals: 1",
+        "rust bad-behavior advisory signals: 730",
         "secret scanning command is operational"
       ],
       "notes": []
@@ -342,13 +333,15 @@
     {
       "name": "Code shape and semantic surface",
       "weight": 12,
-      "score": 90,
-      "weighted_points": 10.8,
+      "score": 45,
+      "weighted_points": 5.4,
       "evidence": [
-        "largest authored code file: crates/domain/src/lib.rs (57 LOC)",
-        "copy-code advisory classes found: 1 (advisory only, no score impact)",
-        "authored code stays below hard LOC limits with no shape markers",
-        "rust bad-behavior advisory signals: 1",
+        "largest authored code file: jnoccio-fusion/src/fusion.rs (3510 LOC)",
+        "code file exceeds 500 LOC",
+        "code file exceeds 1000 LOC",
+        "most code files stay under 300 LOC",
+        "copy-code advisory classes found: 16 (advisory only, no score impact)",
+        "rust bad-behavior advisory signals: 730",
         "no hard bad-behavior findings across detector-backed language families"
       ],
       "notes": []
@@ -356,29 +349,31 @@
     {
       "name": "Data truth and workflow safety",
       "weight": 8,
-      "score": 85,
-      "weighted_points": 6.8,
+      "score": 60,
+      "weighted_points": 4.8,
       "evidence": [
-        "database surface present",
         "structured db boundary manifest present",
-        "db boundary routes roots, migrations, and constraints",
-        "migration directory present"
+        "db boundary routes roots, migrations, and constraints"
       ],
       "notes": []
     },
     {
       "name": "Observability and repair evidence",
       "weight": 8,
-      "score": 85,
-      "weighted_points": 6.8,
+      "score": 100,
+      "weighted_points": 8.0,
       "evidence": [
+        "observability libraries or patterns found",
         "ops/observability directory present",
+        "repair receipts or raw artifact language found",
         "repair queue schema is present",
         "agent-friendly exception pattern found",
         "repair-hint and receipt convention are documented",
         "repair receipt guidance is documented"
       ],
-      "notes": []
+      "notes": [
+        "free-form logging appears in scope"
+      ]
     },
     {
       "name": "Context economy and agent instructions",
@@ -398,12 +393,12 @@
     {
       "name": "Jankurai tool adoption and CI replacement",
       "weight": 7,
-      "score": 10,
-      "weighted_points": 0.7,
+      "score": 26,
+      "weighted_points": 1.82,
       "evidence": [
         "control-plane files present",
         "applicable=15",
-        "configured=0",
+        "configured=12",
         "ci_evidence=0",
         "artifact_verified=0"
       ],
@@ -429,14 +424,10 @@
     {
       "name": "Build speed signals",
       "weight": 4,
-      "score": 80,
-      "weighted_points": 3.2,
+      "score": 30,
+      "weighted_points": 1.2,
       "evidence": [
-        "build acceleration markers found",
-        "targeted test/build commands found",
-        "locked dependency graph present",
-        "CI cache hint found",
-        "explicit cache marker plus narrow per-package target found"
+        "locked dependency graph present"
       ],
       "notes": []
     }
@@ -447,16 +438,24 @@
     "missing_categories": [],
     "evidence": {
       "accessibility": [
+        ".jankurai/repo-score.json",
         "agent/repo-score.json",
         "agent/repo-score.md"
       ],
       "api_mocks": [],
-      "artifact_backed_proof": [],
+      "artifact_backed_proof": [
+        "jnoccio-fusion/src/providers/openai_compatible.rs",
+        "jnoccio-fusion/src/routing.rs",
+        "jnoccio-fusion/src/state.rs",
+        "jnoccio-fusion/src/state/state_core.rs",
+        "jnoccio-fusion/src/state/state_outcomes.rs"
+      ],
       "design_tokens": [],
       "geometry_runtime": [],
       "layout_stability": [],
       "playwright_visual": [],
       "storybook": [
+        ".jankurai/repo-score.json",
         "agent/repo-score.json"
       ],
       "visual_review": []
@@ -465,7 +464,7 @@
   "tool_adoption": {
     "control_plane_present": true,
     "applicable_count": 15,
-    "configured_count": 0,
+    "configured_count": 12,
     "ci_evidence_count": 0,
     "artifact_verified_count": 0,
     "replaced_count": 0,
@@ -473,18 +472,18 @@
       {
         "id": "audit-ci",
         "category": "audit",
-        "mode": "auto",
+        "mode": "advisory",
         "applicable": true,
-        "status": "missing",
+        "status": "configured",
         "replaced_tools": [
           "manual repo scoring",
           "ad hoc score gates"
         ],
         "evidence": [
-          "mode=auto"
+          "mode=advisory",
+          "tool-adoption config entry present"
         ],
         "missing": [
-          "agent/tool-adoption.toml entry",
           "CI command evidence"
         ],
         "local_command": "jankurai audit . --mode advisory --json .jankurai/repo-score.json --md .jankurai/repo-score.md",
@@ -497,18 +496,18 @@
       {
         "id": "proof-routing",
         "category": "proof",
-        "mode": "auto",
+        "mode": "advisory",
         "applicable": true,
-        "status": "missing",
+        "status": "configured",
         "replaced_tools": [
           "ad hoc proof lane selection",
           "manual proof receipts"
         ],
         "evidence": [
-          "mode=auto"
+          "mode=advisory",
+          "tool-adoption config entry present"
         ],
         "missing": [
-          "agent/tool-adoption.toml entry",
           "CI command evidence"
         ],
         "local_command": "jankurai proof . --changed-from origin/main --out target/jankurai/proof-plan.json --md target/jankurai/proof-plan.md",
@@ -524,16 +523,16 @@
         "category": "proof",
         "mode": "auto",
         "applicable": true,
-        "status": "missing",
+        "status": "configured",
         "replaced_tools": [
           "manual changed-surface routing",
           "ad hoc proof obligation lists"
         ],
         "evidence": [
-          "mode=auto"
+          "mode=auto",
+          "tool-adoption config entry present"
         ],
         "missing": [
-          "agent/tool-adoption.toml entry",
           "CI command evidence"
         ],
         "local_command": "jankurai proofbind verify . --changed-from origin/main",
@@ -548,16 +547,16 @@
         "category": "proof",
         "mode": "auto",
         "applicable": true,
-        "status": "missing",
+        "status": "configured",
         "replaced_tools": [
           "line-only coverage review",
           "manual in-diff mutation review"
         ],
         "evidence": [
-          "mode=auto"
+          "mode=auto",
+          "tool-adoption config entry present"
         ],
         "missing": [
-          "agent/tool-adoption.toml entry",
           "CI command evidence"
         ],
         "local_command": "jankurai proofmark rust . --obligations target/jankurai/proofbind/obligations.json",
@@ -594,19 +593,19 @@
       {
         "id": "security",
         "category": "security",
-        "mode": "auto",
+        "mode": "advisory",
         "applicable": true,
-        "status": "missing",
+        "status": "configured",
         "replaced_tools": [
           "gitleaks",
           "dependency review",
           "SBOM/provenance"
         ],
         "evidence": [
-          "mode=auto"
+          "mode=advisory",
+          "tool-adoption config entry present"
         ],
         "missing": [
-          "agent/tool-adoption.toml entry",
           "CI command evidence"
         ],
         "local_command": "jankurai security run . --out target/jankurai/security/evidence.json",
@@ -618,19 +617,19 @@
       {
         "id": "ci-bad-behavior",
         "category": "security",
-        "mode": "auto",
+        "mode": "advisory",
         "applicable": true,
-        "status": "missing",
+        "status": "configured",
         "replaced_tools": [
           "mutable workflow refs",
           "secret echo/debug workflow checks",
           "non-blocking security scans"
         ],
         "evidence": [
-          "mode=auto"
+          "mode=advisory",
+          "tool-adoption config entry present"
         ],
         "missing": [
-          "agent/tool-adoption.toml entry",
           "CI command evidence"
         ],
         "local_command": "cargo test -p jankurai --test language_bad_behavior",
@@ -642,19 +641,19 @@
       {
         "id": "git-bad-behavior",
         "category": "audit",
-        "mode": "auto",
+        "mode": "advisory",
         "applicable": true,
-        "status": "missing",
+        "status": "configured",
         "replaced_tools": [
           "destructive git automation",
           "force-push release scripts",
           "hidden stash-based state"
         ],
         "evidence": [
-          "mode=auto"
+          "mode=advisory",
+          "tool-adoption config entry present"
         ],
         "missing": [
-          "agent/tool-adoption.toml entry",
           "CI command evidence"
         ],
         "local_command": "cargo test -p jankurai --test language_bad_behavior",
@@ -668,17 +667,17 @@
         "category": "release",
         "mode": "auto",
         "applicable": true,
-        "status": "missing",
+        "status": "configured",
         "replaced_tools": [
           "manual release checklist",
           "ad hoc tag and artifact review",
           "manual provenance review"
         ],
         "evidence": [
-          "mode=auto"
+          "mode=auto",
+          "tool-adoption config entry present"
         ],
         "missing": [
-          "agent/tool-adoption.toml entry",
           "CI command evidence"
         ],
         "local_command": "cargo test -p jankurai --test language_bad_behavior",
@@ -756,15 +755,15 @@
         "category": "rust",
         "mode": "auto",
         "applicable": true,
-        "status": "missing",
+        "status": "configured",
         "replaced_tools": [
           "manual witness graphing"
         ],
         "evidence": [
-          "mode=auto"
+          "mode=auto",
+          "tool-adoption config entry present"
         ],
         "missing": [
-          "agent/tool-adoption.toml entry",
           "CI command evidence"
         ],
         "local_command": "jankurai rust witness build .",
@@ -860,17 +859,17 @@
       {
         "id": "agent-tool-supply",
         "category": "security",
-        "mode": "auto",
+        "mode": "advisory",
         "applicable": true,
-        "status": "missing",
+        "status": "configured",
         "replaced_tools": [
           "manual MCP/tool trust review"
         ],
         "evidence": [
-          "mode=auto"
+          "mode=advisory",
+          "tool-adoption config entry present"
         ],
         "missing": [
-          "agent/tool-adoption.toml entry",
           "CI command evidence"
         ],
         "local_command": "jankurai audit . --mode advisory --json .jankurai/repo-score.json --md .jankurai/repo-score.md",
@@ -885,15 +884,15 @@
         "category": "release",
         "mode": "auto",
         "applicable": true,
-        "status": "missing",
+        "status": "configured",
         "replaced_tools": [
           "manual launch checklist"
         ],
         "evidence": [
-          "mode=auto"
+          "mode=auto",
+          "tool-adoption config entry present"
         ],
         "missing": [
-          "agent/tool-adoption.toml entry",
           "CI command evidence"
         ],
         "local_command": "jankurai audit . --mode advisory --json .jankurai/repo-score.json --md .jankurai/repo-score.md",
@@ -908,15 +907,15 @@
         "category": "release",
         "mode": "auto",
         "applicable": true,
-        "status": "missing",
+        "status": "configured",
         "replaced_tools": [
           "manual spend review"
         ],
         "evidence": [
-          "mode=auto"
+          "mode=auto",
+          "tool-adoption config entry present"
         ],
         "missing": [
-          "agent/tool-adoption.toml entry",
           "CI command evidence"
         ],
         "local_command": "jankurai audit . --mode advisory --json .jankurai/repo-score.json --md .jankurai/repo-score.md",
@@ -950,9 +949,22 @@
       "artifact_verified_tools": [],
       "ci_evidence_count": 0,
       "ci_evidence_tools": [],
-      "config_present": false,
-      "configured_count": 0,
-      "configured_tools": [],
+      "config_present": true,
+      "configured_count": 12,
+      "configured_tools": [
+        "audit-ci",
+        "proof-routing",
+        "proofbind",
+        "proofmark-rust",
+        "security",
+        "ci-bad-behavior",
+        "git-bad-behavior",
+        "release-bad-behavior",
+        "rust-witness",
+        "agent-tool-supply",
+        "release-readiness",
+        "cost-budget"
+      ],
       "control_plane_present": true
     },
     "missing": [
@@ -980,7 +992,7 @@
   "copy_code": {
     "schema_version": "1.1.0",
     "generated_by": "jankurai copy-code",
-    "generated_at": "2026-06-12T00:17:20.782666084+00:00",
+    "generated_at": "2026-06-12T01:42:51.647671972+00:00",
     "repo": ".",
     "auditor_version": "1.6.10",
     "status": "review",
@@ -1018,61 +1030,617 @@
       ]
     },
     "summary": {
-      "files_scanned": 49,
-      "files_considered": 2,
-      "active_files": 2,
+      "files_scanned": 159,
+      "files_considered": 78,
+      "active_files": 78,
       "exact_file_classes": 0,
       "hard_classes": 0,
-      "warning_classes": 1,
+      "warning_classes": 16,
       "hard_instances": 0,
-      "warning_instances": 3,
-      "duplicate_lines": 1,
-      "duplicate_tokens": 2,
-      "duplicate_bytes": 20,
-      "total_redundant_lines": 2,
-      "total_redundant_tokens": 4,
-      "total_redundant_bytes": 40
+      "warning_instances": 37,
+      "duplicate_lines": 30,
+      "duplicate_tokens": 83,
+      "duplicate_bytes": 859,
+      "total_redundant_lines": 35,
+      "total_redundant_tokens": 109,
+      "total_redundant_bytes": 1143
     },
     "classes": [
       {
-        "id": "copy-code-body-rust-0a76d27a920f262f",
+        "id": "copy-code-body-rust-1015bd1d5576874f",
+        "kind": "exact_unit_different_name",
+        "severity": "warning",
+        "confidence": "medium",
+        "language": "rust",
+        "duplicate_lines": 8,
+        "duplicate_tokens": 10,
+        "duplicate_bytes": 151,
+        "instance_count": 2,
+        "total_redundant_lines": 8,
+        "total_redundant_tokens": 10,
+        "total_redundant_bytes": 151,
+        "effective_severity": "warning",
+        "hard_fail": false,
+        "fingerprint": "785271ceaa40cf4d",
+        "reason": "same body appears under different names across files",
+        "recommended_action": "choose one owner for the shared body or intentionally differentiate the behavior",
+        "instances": [
+          {
+            "path": "jnoccio-fusion/src/bin/provider_probe.rs",
+            "language": "rust",
+            "start_line": 209,
+            "end_line": 217,
+            "unit_name": "sanitize_path"
+          },
+          {
+            "path": "jnoccio-fusion/src/failure_log.rs",
+            "language": "rust",
+            "start_line": 225,
+            "end_line": 233,
+            "unit_name": "sanitize_component"
+          }
+        ]
+      },
+      {
+        "id": "copy-code-body-rust-ea11a71d823db04a",
+        "kind": "exact_unit_different_name",
+        "severity": "warning",
+        "confidence": "medium",
+        "language": "rust",
+        "duplicate_lines": 1,
+        "duplicate_tokens": 8,
+        "duplicate_bytes": 82,
+        "instance_count": 5,
+        "total_redundant_lines": 4,
+        "total_redundant_tokens": 32,
+        "total_redundant_bytes": 328,
+        "effective_severity": "warning",
+        "hard_fail": false,
+        "fingerprint": "703f7afe77c77160",
+        "reason": "same body appears under different names across files",
+        "recommended_action": "choose one owner for the shared body or intentionally differentiate the behavior",
+        "instances": [
+          {
+            "path": "jnoccio-fusion/src/routing.rs",
+            "language": "rust",
+            "start_line": 708,
+            "end_line": 709,
+            "unit_name": "light_prompts_favor_latency_over_power"
+          },
+          {
+            "path": "jnoccio-fusion/src/routing.rs",
+            "language": "rust",
+            "start_line": 734,
+            "end_line": 735,
+            "unit_name": "overused_model_loses_weight"
+          },
+          {
+            "path": "jnoccio-fusion/src/routing.rs",
+            "language": "rust",
+            "start_line": 752,
+            "end_line": 753,
+            "unit_name": "failure_count_drops_weight_sharply"
+          },
+          {
+            "path": "jnoccio-fusion/src/routing.rs",
+            "language": "rust",
+            "start_line": 816,
+            "end_line": 817,
+            "unit_name": "light_prompts_prefer_smaller_safe_context_when_quality_is_close"
+          },
+          {
+            "path": "jnoccio-fusion/src/routing.rs",
+            "language": "rust",
+            "start_line": 837,
+            "end_line": 838,
+            "unit_name": "backups_exclude_primary_and_prefer_provider_diversity"
+          }
+        ]
+      },
+      {
+        "id": "copy-code-body-rust-dae7b9375d1eaa18",
+        "kind": "exact_unit_different_name",
+        "severity": "warning",
+        "confidence": "medium",
+        "language": "rust",
+        "duplicate_lines": 4,
+        "duplicate_tokens": 12,
+        "duplicate_bytes": 101,
+        "instance_count": 2,
+        "total_redundant_lines": 4,
+        "total_redundant_tokens": 12,
+        "total_redundant_bytes": 101,
+        "effective_severity": "warning",
+        "hard_fail": false,
+        "fingerprint": "3bec9c8ad3c0c28e",
+        "reason": "same body appears under different names across files",
+        "recommended_action": "choose one owner for the shared body or intentionally differentiate the behavior",
+        "instances": [
+          {
+            "path": "jnoccio-fusion/src/router.rs",
+            "language": "rust",
+            "start_line": 519,
+            "end_line": 523,
+            "unit_name": "push_string_header"
+          },
+          {
+            "path": "jnoccio-fusion/src/router.rs",
+            "language": "rust",
+            "start_line": 538,
+            "end_line": 542,
+            "unit_name": "push_json_header"
+          }
+        ]
+      },
+      {
+        "id": "copy-code-unit-rust-88140e5d997e7871",
+        "kind": "exact_unit_same_name",
+        "severity": "warning",
+        "confidence": "high",
+        "language": "rust",
+        "unit_name": "header_string_alternate",
+        "duplicate_lines": 4,
+        "duplicate_tokens": 8,
+        "duplicate_bytes": 96,
+        "instance_count": 2,
+        "total_redundant_lines": 4,
+        "total_redundant_tokens": 8,
+        "total_redundant_bytes": 96,
+        "effective_severity": "warning",
+        "hard_fail": false,
+        "fingerprint": "80e50d426acb96e4",
+        "reason": "same-name semantic unit copied across multiple files",
+        "recommended_action": "keep the named unit in one owner and call it from the other sites",
+        "instances": [
+          {
+            "path": "jnoccio-fusion/src/router.rs",
+            "language": "rust",
+            "start_line": 696,
+            "end_line": 700,
+            "unit_name": "header_string_alternate"
+          },
+          {
+            "path": "jnoccio-fusion/src/rpc_shim.rs",
+            "language": "rust",
+            "start_line": 557,
+            "end_line": 561,
+            "unit_name": "header_string_alternate"
+          }
+        ]
+      },
+      {
+        "id": "copy-code-body-rust-e84266e9b6b27597",
+        "kind": "exact_unit_different_name",
+        "severity": "warning",
+        "confidence": "medium",
+        "language": "rust",
+        "duplicate_lines": 1,
+        "duplicate_tokens": 1,
+        "duplicate_bytes": 19,
+        "instance_count": 4,
+        "total_redundant_lines": 3,
+        "total_redundant_tokens": 3,
+        "total_redundant_bytes": 57,
+        "effective_severity": "warning",
+        "hard_fail": false,
+        "fingerprint": "e86919e69e9c26e6",
+        "reason": "same body appears under different names across files",
+        "recommended_action": "choose one owner for the shared body or intentionally differentiate the behavior",
+        "instances": [
+          {
+            "path": "crates/zyal-core/src/forbidden.rs",
+            "language": "rust",
+            "start_line": 107,
+            "end_line": 108,
+            "unit_name": "detects_artifact_shape_marker"
+          },
+          {
+            "path": "crates/zyal-core/src/forbidden.rs",
+            "language": "rust",
+            "start_line": 115,
+            "end_line": 116,
+            "unit_name": "detects_credential_leakage"
+          },
+          {
+            "path": "crates/zyal-core/src/forbidden.rs",
+            "language": "rust",
+            "start_line": 137,
+            "end_line": 138,
+            "unit_name": "clean_text_returns_none"
+          },
+          {
+            "path": "jnoccio-fusion/src/config.rs",
+            "language": "rust",
+            "start_line": 1075,
+            "end_line": 1076,
+            "unit_name": "resolve_configured_string_uses_default_when_missing"
+          }
+        ]
+      },
+      {
+        "id": "copy-code-unit-rust-5015d3c70841973e",
+        "kind": "exact_unit_same_name",
+        "severity": "warning",
+        "confidence": "high",
+        "language": "rust",
+        "unit_name": "argument_u64",
+        "duplicate_lines": 2,
+        "duplicate_tokens": 6,
+        "duplicate_bytes": 48,
+        "instance_count": 2,
+        "total_redundant_lines": 2,
+        "total_redundant_tokens": 6,
+        "total_redundant_bytes": 48,
+        "effective_severity": "warning",
+        "hard_fail": false,
+        "fingerprint": "56aca5b34499b5ec",
+        "reason": "same-name semantic unit copied across multiple files",
+        "recommended_action": "keep the named unit in one owner and call it from the other sites",
+        "instances": [
+          {
+            "path": "jnoccio-fusion/src/mcp.rs",
+            "language": "rust",
+            "start_line": 1090,
+            "end_line": 1092,
+            "unit_name": "argument_u64"
+          },
+          {
+            "path": "jnoccio-fusion/src/search.rs",
+            "language": "rust",
+            "start_line": 187,
+            "end_line": 189,
+            "unit_name": "argument_u64"
+          }
+        ]
+      },
+      {
+        "id": "copy-code-body-rust-16a92dc9325b9bcc",
+        "kind": "exact_unit_different_name",
+        "severity": "warning",
+        "confidence": "medium",
+        "language": "rust",
+        "duplicate_lines": 1,
+        "duplicate_tokens": 7,
+        "duplicate_bytes": 53,
+        "instance_count": 2,
+        "total_redundant_lines": 1,
+        "total_redundant_tokens": 7,
+        "total_redundant_bytes": 53,
+        "effective_severity": "warning",
+        "hard_fail": false,
+        "fingerprint": "5aaa396f99122562",
+        "reason": "same body appears under different names across files",
+        "recommended_action": "choose one owner for the shared body or intentionally differentiate the behavior",
+        "instances": [
+          {
+            "path": "jnoccio-fusion/src/config.rs",
+            "language": "rust",
+            "start_line": 614,
+            "end_line": 615,
+            "unit_name": "strip_jsonc"
+          },
+          {
+            "path": "jnoccio-fusion/src/config.rs",
+            "language": "rust",
+            "start_line": 725,
+            "end_line": 726,
+            "unit_name": "substitute_env_report"
+          }
+        ]
+      },
+      {
+        "id": "copy-code-body-rust-aa4ebad2b351d822",
+        "kind": "exact_unit_different_name",
+        "severity": "warning",
+        "confidence": "medium",
+        "language": "rust",
+        "duplicate_lines": 1,
+        "duplicate_tokens": 6,
+        "duplicate_bytes": 49,
+        "instance_count": 2,
+        "total_redundant_lines": 1,
+        "total_redundant_tokens": 6,
+        "total_redundant_bytes": 49,
+        "effective_severity": "warning",
+        "hard_fail": false,
+        "fingerprint": "9eca90e979aa3c50",
+        "reason": "same body appears under different names across files",
+        "recommended_action": "choose one owner for the shared body or intentionally differentiate the behavior",
+        "instances": [
+          {
+            "path": "jnoccio-fusion/src/fusion.rs",
+            "language": "rust",
+            "start_line": 347,
+            "end_line": 348,
+            "unit_name": "dashboard_snapshot"
+          },
+          {
+            "path": "jnoccio-fusion/src/fusion.rs",
+            "language": "rust",
+            "start_line": 2130,
+            "end_line": 2131,
+            "unit_name": "model_status_view"
+          }
+        ]
+      },
+      {
+        "id": "copy-code-body-rust-4b2b0fe7d55a475a",
+        "kind": "exact_unit_different_name",
+        "severity": "warning",
+        "confidence": "medium",
+        "language": "rust",
+        "duplicate_lines": 1,
+        "duplicate_tokens": 6,
+        "duplicate_bytes": 45,
+        "instance_count": 2,
+        "total_redundant_lines": 1,
+        "total_redundant_tokens": 6,
+        "total_redundant_bytes": 45,
+        "effective_severity": "warning",
+        "hard_fail": false,
+        "fingerprint": "9eca90e979aa3c50",
+        "reason": "same body appears under different names across files",
+        "recommended_action": "choose one owner for the shared body or intentionally differentiate the behavior",
+        "instances": [
+          {
+            "path": "jnoccio-fusion/src/fusion.rs",
+            "language": "rust",
+            "start_line": 2874,
+            "end_line": 2875,
+            "unit_name": "count_ready_slots_by_user"
+          },
+          {
+            "path": "jnoccio-fusion/src/fusion.rs",
+            "language": "rust",
+            "start_line": 2886,
+            "end_line": 2887,
+            "unit_name": "count_ready_slots_by_provider"
+          }
+        ]
+      },
+      {
+        "id": "copy-code-body-rust-78c7f8562311a37f",
+        "kind": "exact_unit_different_name",
+        "severity": "warning",
+        "confidence": "medium",
+        "language": "rust",
+        "duplicate_lines": 1,
+        "duplicate_tokens": 5,
+        "duplicate_bytes": 60,
+        "instance_count": 2,
+        "total_redundant_lines": 1,
+        "total_redundant_tokens": 5,
+        "total_redundant_bytes": 60,
+        "effective_severity": "warning",
+        "hard_fail": false,
+        "fingerprint": "0ced578a64c05499",
+        "reason": "same body appears under different names across files",
+        "recommended_action": "choose one owner for the shared body or intentionally differentiate the behavior",
+        "instances": [
+          {
+            "path": "jnoccio-fusion/src/routing.rs",
+            "language": "rust",
+            "start_line": 698,
+            "end_line": 699,
+            "unit_name": "classifies_code_debug_task_as_heavy"
+          },
+          {
+            "path": "jnoccio-fusion/src/routing.rs",
+            "language": "rust",
+            "start_line": 719,
+            "end_line": 720,
+            "unit_name": "heavy_prompts_favor_power"
+          }
+        ]
+      },
+      {
+        "id": "copy-code-body-rust-d997f033d78379d2",
+        "kind": "exact_unit_different_name",
+        "severity": "warning",
+        "confidence": "medium",
+        "language": "rust",
+        "duplicate_lines": 1,
+        "duplicate_tokens": 5,
+        "duplicate_bytes": 57,
+        "instance_count": 2,
+        "total_redundant_lines": 1,
+        "total_redundant_tokens": 5,
+        "total_redundant_bytes": 57,
+        "effective_severity": "warning",
+        "hard_fail": false,
+        "fingerprint": "0ced578a64c05499",
+        "reason": "same body appears under different names across files",
+        "recommended_action": "choose one owner for the shared body or intentionally differentiate the behavior",
+        "instances": [
+          {
+            "path": "jnoccio-fusion/src/routing.rs",
+            "language": "rust",
+            "start_line": 558,
+            "end_line": 559,
+            "unit_name": "context_fit_factor"
+          },
+          {
+            "path": "jnoccio-fusion/src/routing.rs",
+            "language": "rust",
+            "start_line": 568,
+            "end_line": 569,
+            "unit_name": "learned_rate_factor"
+          }
+        ]
+      },
+      {
+        "id": "copy-code-body-rust-d061ac9b639bbb0d",
+        "kind": "exact_unit_different_name",
+        "severity": "warning",
+        "confidence": "medium",
+        "language": "rust",
+        "duplicate_lines": 1,
+        "duplicate_tokens": 3,
+        "duplicate_bytes": 35,
+        "instance_count": 2,
+        "total_redundant_lines": 1,
+        "total_redundant_tokens": 3,
+        "total_redundant_bytes": 35,
+        "effective_severity": "warning",
+        "hard_fail": false,
+        "fingerprint": "9da97892724d5e8d",
+        "reason": "same body appears under different names across files",
+        "recommended_action": "choose one owner for the shared body or intentionally differentiate the behavior",
+        "instances": [
+          {
+            "path": "jnoccio-fusion/src/rpc_shim.rs",
+            "language": "rust",
+            "start_line": 59,
+            "end_line": 60,
+            "unit_name": "load_session_from_disk"
+          },
+          {
+            "path": "jnoccio-fusion/src/rpc_shim.rs",
+            "language": "rust",
+            "start_line": 65,
+            "end_line": 66,
+            "unit_name": "save_session_to_disk"
+          }
+        ]
+      },
+      {
+        "id": "copy-code-body-rust-805465e19f50b3ee",
         "kind": "exact_unit_different_name",
         "severity": "warning",
         "confidence": "medium",
         "language": "rust",
         "duplicate_lines": 1,
         "duplicate_tokens": 2,
-        "duplicate_bytes": 20,
-        "instance_count": 3,
-        "total_redundant_lines": 2,
-        "total_redundant_tokens": 4,
-        "total_redundant_bytes": 40,
+        "duplicate_bytes": 21,
+        "instance_count": 2,
+        "total_redundant_lines": 1,
+        "total_redundant_tokens": 2,
+        "total_redundant_bytes": 21,
         "effective_severity": "warning",
         "hard_fail": false,
-        "fingerprint": "bcf83229c5e78979",
+        "fingerprint": "0ced578a64c05499",
         "reason": "same body appears under different names across files",
         "recommended_action": "choose one owner for the shared body or intentionally differentiate the behavior",
         "instances": [
           {
-            "path": "crates/domain/src/lib.rs",
+            "path": "jnoccio-fusion/src/routing.rs",
             "language": "rust",
-            "start_line": 24,
-            "end_line": 25,
-            "unit_name": "repair_hint"
+            "start_line": 766,
+            "end_line": 767,
+            "unit_name": "route_excludes_models_below_required_context"
           },
           {
-            "path": "crates/domain/src/lib.rs",
+            "path": "jnoccio-fusion/src/routing.rs",
             "language": "rust",
-            "start_line": 33,
-            "end_line": 34,
-            "unit_name": "common_fixes"
+            "start_line": 793,
+            "end_line": 794,
+            "unit_name": "no_eligible_context_band_returns_no_model"
+          }
+        ]
+      },
+      {
+        "id": "copy-code-body-rust-2a215ecbf1583cbe",
+        "kind": "exact_unit_different_name",
+        "severity": "warning",
+        "confidence": "medium",
+        "language": "rust",
+        "duplicate_lines": 1,
+        "duplicate_tokens": 2,
+        "duplicate_bytes": 17,
+        "instance_count": 2,
+        "total_redundant_lines": 1,
+        "total_redundant_tokens": 2,
+        "total_redundant_bytes": 17,
+        "effective_severity": "warning",
+        "hard_fail": false,
+        "fingerprint": "1f6c5afb2030f3fd",
+        "reason": "same body appears under different names across files",
+        "recommended_action": "choose one owner for the shared body or intentionally differentiate the behavior",
+        "instances": [
+          {
+            "path": "jnoccio-fusion/src/state/state_util.rs",
+            "language": "rust",
+            "start_line": 125,
+            "end_line": 126,
+            "unit_name": "insert_metric_event"
           },
           {
-            "path": "crates/domain/src/lib.rs",
+            "path": "jnoccio-fusion/src/state/state_util.rs",
             "language": "rust",
-            "start_line": 50,
-            "end_line": 51,
-            "unit_name": "fmt"
+            "start_line": 161,
+            "end_line": 162,
+            "unit_name": "prune_metric_events"
+          }
+        ]
+      },
+      {
+        "id": "copy-code-body-rust-a8cc7acd4ec90937",
+        "kind": "exact_unit_different_name",
+        "severity": "warning",
+        "confidence": "medium",
+        "language": "rust",
+        "duplicate_lines": 1,
+        "duplicate_tokens": 1,
+        "duplicate_bytes": 14,
+        "instance_count": 2,
+        "total_redundant_lines": 1,
+        "total_redundant_tokens": 1,
+        "total_redundant_bytes": 14,
+        "effective_severity": "warning",
+        "hard_fail": false,
+        "fingerprint": "d18a7171f0a6b114",
+        "reason": "same body appears under different names across files",
+        "recommended_action": "choose one owner for the shared body or intentionally differentiate the behavior",
+        "instances": [
+          {
+            "path": "jnoccio-fusion/src/config.rs",
+            "language": "rust",
+            "start_line": 366,
+            "end_line": 367,
+            "unit_name": "from_config"
+          },
+          {
+            "path": "jnoccio-fusion/src/fusion.rs",
+            "language": "rust",
+            "start_line": 3084,
+            "end_line": 3085,
+            "unit_name": "from_error"
+          }
+        ]
+      },
+      {
+        "id": "copy-code-unit-rust-dd5a84a545c8e1a0",
+        "kind": "exact_unit_same_name",
+        "severity": "warning",
+        "confidence": "high",
+        "language": "rust",
+        "unit_name": "header_string",
+        "duplicate_lines": 1,
+        "duplicate_tokens": 1,
+        "duplicate_bytes": 11,
+        "instance_count": 2,
+        "total_redundant_lines": 1,
+        "total_redundant_tokens": 1,
+        "total_redundant_bytes": 11,
+        "effective_severity": "warning",
+        "hard_fail": false,
+        "fingerprint": "69104e586c141f61",
+        "reason": "same-name semantic unit copied across multiple files",
+        "recommended_action": "keep the named unit in one owner and call it from the other sites",
+        "instances": [
+          {
+            "path": "jnoccio-fusion/src/router.rs",
+            "language": "rust",
+            "start_line": 707,
+            "end_line": 708,
+            "unit_name": "header_string"
+          },
+          {
+            "path": "jnoccio-fusion/src/rpc_shim.rs",
+            "language": "rust",
+            "start_line": 565,
+            "end_line": 566,
+            "unit_name": "header_string"
           }
         ]
       }
@@ -1084,8 +1652,8 @@
     ]
   },
   "profile_structure": {
-    "applicable_count": 3,
-    "canonical_count": 3,
+    "applicable_count": 1,
+    "canonical_count": 1,
     "noncanonical_count": 0,
     "guidance_missing_count": 0,
     "cells": [
@@ -1124,20 +1692,18 @@
       },
       {
         "id": "domain",
-        "applicable": true,
-        "status": "canonical",
+        "applicable": false,
+        "status": "not_applicable",
         "canonical_path": "crates/domain/",
-        "detected_paths": [
-          "crates/domain"
-        ],
+        "detected_paths": [],
         "aliases": [
           "domain/",
           "core/"
         ],
-        "guidance_status": "present",
+        "guidance_status": "not_required",
         "owner": "crates/domain",
         "proof_lane": "unit / property tests",
-        "agent_fix": "keep `crates/domain/AGENTS.md` aligned with owns / forbidden / proof lane guidance"
+        "agent_fix": "no action"
       },
       {
         "id": "application",
@@ -1207,21 +1773,19 @@
       },
       {
         "id": "db",
-        "applicable": true,
-        "status": "canonical",
+        "applicable": false,
+        "status": "not_applicable",
         "canonical_path": "db/",
-        "detected_paths": [
-          "db"
-        ],
+        "detected_paths": [],
         "aliases": [
           "migrations/",
           "constraints/",
           "sql/"
         ],
-        "guidance_status": "present",
+        "guidance_status": "not_required",
         "owner": "db",
         "proof_lane": "migration / constraint tests",
-        "agent_fix": "keep `db/AGENTS.md` aligned with owns / forbidden / proof lane guidance"
+        "agent_fix": "no action"
       },
       {
         "id": "python-ai",
@@ -1266,27 +1830,9 @@
       }
     ],
     "evidence": {
-      "applicable_count": 3,
-      "canonical_count": 3,
+      "applicable_count": 1,
+      "canonical_count": 1,
       "detected_cells": [
-        {
-          "canonical_path": "crates/domain/",
-          "detected_paths": [
-            "crates/domain"
-          ],
-          "guidance_status": "present",
-          "id": "domain",
-          "status": "canonical"
-        },
-        {
-          "canonical_path": "db/",
-          "detected_paths": [
-            "db"
-          ],
-          "guidance_status": "present",
-          "id": "db",
-          "status": "canonical"
-        },
         {
           "canonical_path": "ops/",
           "detected_paths": [
@@ -1304,6 +1850,30 @@
     }
   },
   "findings": [
+    {
+      "severity": "medium",
+      "category": "shape",
+      "path": ".",
+      "problem": "`Code shape and semantic surface` scored 45 below the standard floor of 85",
+      "agent_fix": "split large or ambiguous authored code into smaller semantic modules with focused tests",
+      "evidence": [
+        "largest authored code file: jnoccio-fusion/src/fusion.rs (3510 LOC)",
+        "code file exceeds 500 LOC",
+        "code file exceeds 1000 LOC",
+        "most code files stay under 300 LOC"
+      ],
+      "check_id": "HLT-001-DEAD-MARKER:shape",
+      "hardness": "soft",
+      "confidence": 0.76,
+      "evidence_kind": "repository-scan",
+      "rerun_command": "just fast",
+      "fingerprint": "sha256:d812a8441e548817f319c72bd4f48de7acd61a0768568fe61b6152893aa2a79e",
+      "rule_id": "HLT-001-DEAD-MARKER",
+      "tlr": "Entropy",
+      "lane": "fast",
+      "docs_url": "docs/audit-rubric.md#future-hostile-language-rule",
+      "owner": "tools"
+    },
     {
       "severity": "medium",
       "category": "security",
@@ -1326,76 +1896,82 @@
       "tlr": "Security, secrets, agency",
       "lane": "security",
       "docs_url": "docs/audit-rubric.md#top-level-risk-mapping",
-      "owner": "ops"
+      "owner": "ci-release"
     },
     {
       "severity": "medium",
       "category": "proof",
       "path": "Justfile",
-      "problem": "`Build speed signals` scored 80 below the standard floor of 85",
+      "problem": "`Build speed signals` scored 30 below the standard floor of 85",
       "agent_fix": "add fast deterministic build/test targets, caches, and narrow proof lanes for agent iteration",
       "evidence": [
-        "build acceleration markers found",
-        "targeted test/build commands found",
-        "locked dependency graph present",
-        "CI cache hint found"
+        "locked dependency graph present"
       ],
       "check_id": "HLT-018-PERF-CONCURRENCY-DRIFT:proof",
       "hardness": "soft",
       "confidence": 0.76,
       "evidence_kind": "repository-scan",
       "rerun_command": "just fast",
-      "fingerprint": "sha256:2f2531223d7f7036c20d44b58cd52e64aa53ffd6cb85e01e541c1feff0c09cb2",
+      "fingerprint": "sha256:5a2a647775dcb2bfabb2b25a7bc50806600cb3d9e0da806eb6ff5379b36f84c5",
       "rule_id": "HLT-018-PERF-CONCURRENCY-DRIFT",
       "tlr": "Verification",
       "lane": "fast",
       "docs_url": "docs/testing.md",
-      "owner": "workspace"
+      "owner": "ci-release"
     },
     {
       "severity": "medium",
-      "category": "release",
-      "path": "docs/testing.md",
-      "problem": "cost or spend-risk surface lacks budget proof",
-      "agent_fix": "add explicit budgets, quotas, stop conditions, and kill-switch evidence for paid or unbounded operations",
+      "category": "data",
+      "path": "db/",
+      "problem": "`Data truth and workflow safety` scored 60 below the standard floor of 85",
+      "agent_fix": "move durable truth into migrations, constraints, adapters, and application-owned transactions",
       "evidence": [
-        "cost surface found without budget/stop-condition policy"
+        "structured db boundary manifest present",
+        "db boundary routes roots, migrations, and constraints"
       ],
-      "check_id": "HLT-026-COST-BUDGET-GAP:release",
+      "check_id": "HLT-006-DIRECT-DB-WRONG-LAYER:data",
       "hardness": "soft",
-      "confidence": 0.88,
-      "evidence_kind": "policy-manifest",
-      "rerun_command": "just check",
-      "fingerprint": "sha256:edd248b7afc24b644107205fa5b84a88103ac4b622009ff9f19b779de8798f59",
-      "rule_id": "HLT-026-COST-BUDGET-GAP",
-      "tlr": "Verification",
-      "lane": "release",
-      "docs_url": "docs/testing.md",
-      "owner": "standard",
-      "matched_term": "budget",
-      "reason": "unbounded paid work needs budgets and stop conditions"
+      "confidence": 0.76,
+      "evidence_kind": "sql",
+      "rerun_command": "just fast",
+      "fingerprint": "sha256:bc3c154999ceeadf008cf312a5b1205941d2a5bc9868961a1358cefa07b821ae",
+      "rule_id": "HLT-006-DIRECT-DB-WRONG-LAYER",
+      "tlr": "Contracts/data",
+      "lane": "db",
+      "docs_url": "docs/audit-rubric.md#required-shape",
+      "owner": "data"
     }
   ],
   "agent_fix_queue": [
+    {
+      "path": "db/",
+      "priority": "medium",
+      "rule_id": "HLT-006-DIRECT-DB-WRONG-LAYER",
+      "tlr": "Contracts/data",
+      "lane": "db",
+      "owner": "data",
+      "task": "move durable truth into migrations, constraints, adapters, and application-owned transactions",
+      "why": "`Data truth and workflow safety` scored 60 below the standard floor of 85"
+    },
     {
       "path": "Justfile",
       "priority": "medium",
       "rule_id": "HLT-018-PERF-CONCURRENCY-DRIFT",
       "tlr": "Verification",
       "lane": "fast",
-      "owner": "workspace",
+      "owner": "ci-release",
       "task": "add fast deterministic build/test targets, caches, and narrow proof lanes for agent iteration",
-      "why": "`Build speed signals` scored 80 below the standard floor of 85"
+      "why": "`Build speed signals` scored 30 below the standard floor of 85"
     },
     {
-      "path": "docs/testing.md",
+      "path": ".",
       "priority": "medium",
-      "rule_id": "HLT-026-COST-BUDGET-GAP",
-      "tlr": "Verification",
-      "lane": "release",
-      "owner": "standard",
-      "task": "add explicit budgets, quotas, stop conditions, and kill-switch evidence for paid or unbounded operations",
-      "why": "cost or spend-risk surface lacks budget proof"
+      "rule_id": "HLT-001-DEAD-MARKER",
+      "tlr": "Entropy",
+      "lane": "fast",
+      "owner": "tools",
+      "task": "split large or ambiguous authored code into smaller semantic modules with focused tests",
+      "why": "`Code shape and semantic surface` scored 45 below the standard floor of 85"
     },
     {
       "path": ".github/workflows/jankurai.yml",
@@ -1403,7 +1979,7 @@
       "rule_id": "HLT-016-SUPPLY-CHAIN-DRIFT",
       "tlr": "Security, secrets, agency",
       "lane": "security",
-      "owner": "ops",
+      "owner": "ci-release",
       "task": "wire secret, dependency, provenance, and workflow scans into an operational CI lane",
       "why": "`Security and supply-chain posture` scored 80 below the standard floor of 85"
     }

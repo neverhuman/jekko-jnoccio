@@ -1,0 +1,21 @@
+schema_version = 1
+
+[[lane]]
+name = "fast"
+command = "bash ops/ci/fast.sh"
+purpose = "deterministic Rust workspace proof"
+
+[[lane]]
+name = "security"
+command = "bash ops/ci/security.sh"
+purpose = "secret, dependency, and policy scan"
+
+[[lane]]
+name = "audit"
+command = "bash ops/ci/jankurai.sh"
+purpose = "Jankurai score and repair artifacts"
+
+[[lane]]
+name = "local"
+command = "bash scripts/ci-local.sh"
+purpose = "same shell lanes that GitHub Actions calls"

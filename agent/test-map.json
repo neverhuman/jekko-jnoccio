@@ -1,112 +1,322 @@
 {
+  "default": {
+    "command": "bash scripts/ci-local.sh",
+    "purpose": "fallback local CI proof"
+  },
   "tests": {
-    ".github/workflows/": {
-      "command": "bash scripts/ci-local.sh",
-      "purpose": "verify workflow dispatch stays aligned with local CI wrappers"
-    },
-    ".gitignore": {
-      "command": "just fast",
-      "purpose": "verify ignored artifacts do not hide source files"
-    },
-    ".gitlab-ci.yml": {
-      "command": "bash scripts/ci-local.sh",
-      "purpose": "verify GitLab dispatch stays aligned with local CI wrappers"
-    },
-    "AGENTS.md": {
-      "command": "just fast",
-      "purpose": "verify repo instructions stay visible"
+    "Cargo.toml": {
+      "command": "bash ops/ci/fast.sh",
+      "purpose": "workspace manifest changes compile and test"
     },
     "Cargo.lock": {
-      "command": "just fast",
-      "purpose": "verify dependency lock stays in sync"
+      "command": "bash ops/ci/fast.sh",
+      "purpose": "lockfile changes compile and test"
     },
-    "Cargo.toml": {
-      "command": "just fast",
-      "purpose": "verify the package manifest stays parseable"
-    },
-    "Justfile": {
-      "command": "just fast",
-      "purpose": "verify lane wrappers stay runnable"
-    },
-    "README.md": {
-      "command": "just fast",
-      "purpose": "verify the repo README stays in sync"
-    },
-    "agent/": {
-      "command": "bash ops/ci/jankurai.sh",
-      "purpose": "verify the Jankurai metadata bundle stays clean"
-    },
-    "docs/": {
-      "command": "just fast",
-      "purpose": "verify agent-readable docs stay routed"
-    },
-    "docs/testing.md": {
-      "command": "bash ops/ci/jankurai.sh",
-      "purpose": "verify testing, repair receipt, and launch-gate evidence stays audit-clean"
+    "crates/": {
+      "command": "bash ops/ci/fast.sh",
+      "purpose": "Rust source changes compile and test"
     },
     "ops/": {
       "command": "bash scripts/ci-local.sh",
-      "purpose": "verify CI wrappers and hooks stay runnable"
-    },
-    "rust-toolchain.toml": {
-      "command": "just fast",
-      "purpose": "verify the Rust toolchain pin stays parseable"
+      "purpose": "CI lane changes are locally reproducible"
     },
     "scripts/": {
-      "command": "bash -n scripts/ci-doctor.sh && bash -n scripts/ci-local.sh",
-      "purpose": "verify local CI helper scripts parse"
+      "command": "bash scripts/ci-local.sh",
+      "purpose": "script changes are locally reproducible"
     },
-    "src/": {
-      "command": "just test",
-      "purpose": "verify the crate body and unit tests stay green"
+    "agent/": {
+      "command": "bash ops/ci/jankurai.sh",
+      "purpose": "Jankurai control-plane changes refresh score artifacts"
     },
-    "tests/": {
-      "command": "just test",
-      "purpose": "verify integration proof stays green"
+    ".github/": {
+      "command": "bash scripts/ci-local.sh",
+      "purpose": "workflow changes delegate to local CI lanes"
     },
-    "CHANGELOG.md": {
-      "command": "just fast",
-      "purpose": "verify release notes stay routed"
-    },
-    "crates/domain/": {
-      "command": "just test",
-      "purpose": "verify the domain error surface stays compiled"
-    },
-    "crates/domain/AGENTS.md": {
-      "command": "just test",
-      "purpose": "verify domain repair guidance stays paired with tests"
-    },
-    "crates/domain/observability.md": {
-      "command": "just test",
-      "purpose": "verify domain repair receipts stay paired with tests"
-    },
-    "crates/domain/Cargo.toml": {
-      "command": "just test",
-      "purpose": "verify domain crate manifest stays compiled"
+    "contracts/": {
+      "command": "bash ops/ci/jankurai.sh",
+      "purpose": "contract surface remains audit-routed"
     },
     "db/": {
-      "command": "jankurai doctor --fail-on critical",
-      "purpose": "advisory database boundary health check"
+      "command": "bash ops/ci/jankurai.sh",
+      "purpose": "database policy and migrations remain audit-routed"
     },
-    "db/AGENTS.md": {
-      "command": "jankurai doctor --fail-on critical",
-      "purpose": "verify database repair guidance stays visible"
+    "docs/": {
+      "command": "bash ops/ci/jankurai.sh",
+      "purpose": "documentation changes refresh audit evidence"
     },
-    "db/constraints/": {
-      "command": "jankurai doctor --fail-on critical",
-      "purpose": "advisory constraint-lane health check until DB proof exists"
+    "apps/": {
+      "command": "bash scripts/ci-local.sh",
+      "purpose": "application changes route through local CI"
     },
-    "db/migrations/": {
-      "command": "jankurai doctor --fail-on critical",
-      "purpose": "advisory control-plane health check until migration tests exist"
+    "tools/": {
+      "command": "bash scripts/ci-local.sh",
+      "purpose": "tooling changes route through local CI"
     },
-    "ops/observability/": {
-      "command": "just score",
-      "purpose": "verify local repair receipts stay routed"
+    "smartmemory/": {
+      "command": "bash ops/ci/jankurai.sh",
+      "purpose": "smartmemory docs and data remain audit-routed"
     },
-    "schemas/repair-queue.schema.json": {
-      "command": "just score",
-      "purpose": "verify repair queue schema stays routed"
+    "paper/": {
+      "command": "bash ops/ci/jankurai.sh",
+      "purpose": "paper evidence remains audit-routed"
+    },
+    "jnoccio-fusion/": {
+      "command": "bash ops/ci/fast.sh",
+      "purpose": "router fusion changes compile and test"
+    },
+    ".env.example": {
+      "command": "bash scripts/ci-doctor.sh",
+      "purpose": "environment template remains local-only"
+    },
+    ".gitignore": {
+      "command": "bash scripts/ci-local.sh",
+      "purpose": "ignored runtime paths and tracked artifacts remain separated"
+    },
+    ".gitlab-ci.yml": {
+      "command": "bash scripts/ci-local.sh",
+      "purpose": "legacy CI removal or parity changes stay reproducible"
+    },
+    "AGENTS.md": {
+      "command": "bash ops/ci/jankurai.sh",
+      "purpose": "agent routing remains canonical"
+    },
+    "CHANGELOG.md": {
+      "command": "bash ops/ci/jankurai.sh",
+      "purpose": "release history remains visible to audit"
+    },
+    "Justfile": {
+      "command": "bash scripts/ci-local.sh",
+      "purpose": "local entry points route to CI lanes"
+    },
+    "README.md": {
+      "command": "bash ops/ci/jankurai.sh",
+      "purpose": "operator documentation remains audit-routable"
+    },
+    "rust-toolchain.toml": {
+      "command": "bash ops/ci/fast.sh",
+      "purpose": "toolchain changes compile and test"
+    },
+    "package.json": {
+      "command": "bash scripts/ci-local.sh",
+      "purpose": "node entry points remain CI-routable"
+    },
+    "package-lock.json": {
+      "command": "bash scripts/ci-local.sh",
+      "purpose": "node lockfile changes remain reproducible"
+    },
+    "tsconfig.base.json": {
+      "command": "bash scripts/ci-local.sh",
+      "purpose": "typescript configuration remains checked"
+    },
+    "ZYAL_MISSION.md": {
+      "command": "bash ops/ci/jankurai.sh",
+      "purpose": "ZYAL mission docs remain routed"
+    },
+    "ZYAL_WORKFLOW.md": {
+      "command": "bash ops/ci/jankurai.sh",
+      "purpose": "ZYAL workflow docs remain routed"
+    },
+    "MEMORY_SYSTEM_LEVELUP.md": {
+      "command": "bash ops/ci/jankurai.sh",
+      "purpose": "memory system docs remain routed"
+    },
+    "JANKURAI_TASKLIST.md": {
+      "command": "bash ops/ci/jankurai.sh",
+      "purpose": "agent task plan remains routed"
+    },
+    "JANKURAI_TASKLIST.md.completed": {
+      "command": "bash ops/ci/jankurai.sh",
+      "purpose": "completed agent plan remains routed"
+    },
+    "SANDBOX_WORKPLAN.md": {
+      "command": "bash ops/ci/jankurai.sh",
+      "purpose": "sandbox workplan remains routed"
+    },
+    "codex-jankurai-loop.sh": {
+      "command": "bash scripts/ci-local.sh",
+      "purpose": "agent automation remains executable"
+    },
+    "jekko-jankurai-loop.sh": {
+      "command": "bash scripts/ci-local.sh",
+      "purpose": "agent automation remains executable"
+    },
+    "jekko-jankurai-loop-common.sh": {
+      "command": "bash scripts/ci-local.sh",
+      "purpose": "agent automation remains executable"
+    },
+    "jekko-jankurai-loop-runner.sh": {
+      "command": "bash scripts/ci-local.sh",
+      "purpose": "agent automation remains executable"
+    },
+    ".jankurai/": {
+      "command": "bash ops/ci/jankurai.sh",
+      "purpose": "local Jankurai score output remains reproducible"
+    },
+    "schemas/": {
+      "command": "bash ops/ci/jankurai.sh",
+      "purpose": "Jankurai schema artifacts remain routed"
+    },
+    "jekko-split/": {
+      "command": "bash scripts/ci-local.sh",
+      "purpose": "split-family tooling remains locally reproducible"
+    }
+  },
+  "paths": {
+    "Cargo.toml": {
+      "command": "bash ops/ci/fast.sh",
+      "purpose": "workspace manifest changes compile and test"
+    },
+    "Cargo.lock": {
+      "command": "bash ops/ci/fast.sh",
+      "purpose": "lockfile changes compile and test"
+    },
+    "crates/": {
+      "command": "bash ops/ci/fast.sh",
+      "purpose": "Rust source changes compile and test"
+    },
+    "ops/": {
+      "command": "bash scripts/ci-local.sh",
+      "purpose": "CI lane changes are locally reproducible"
+    },
+    "scripts/": {
+      "command": "bash scripts/ci-local.sh",
+      "purpose": "script changes are locally reproducible"
+    },
+    "agent/": {
+      "command": "bash ops/ci/jankurai.sh",
+      "purpose": "Jankurai control-plane changes refresh score artifacts"
+    },
+    ".github/": {
+      "command": "bash scripts/ci-local.sh",
+      "purpose": "workflow changes delegate to local CI lanes"
+    },
+    "contracts/": {
+      "command": "bash ops/ci/jankurai.sh",
+      "purpose": "contract surface remains audit-routed"
+    },
+    "db/": {
+      "command": "bash ops/ci/jankurai.sh",
+      "purpose": "database policy and migrations remain audit-routed"
+    },
+    "docs/": {
+      "command": "bash ops/ci/jankurai.sh",
+      "purpose": "documentation changes refresh audit evidence"
+    },
+    "apps/": {
+      "command": "bash scripts/ci-local.sh",
+      "purpose": "application changes route through local CI"
+    },
+    "tools/": {
+      "command": "bash scripts/ci-local.sh",
+      "purpose": "tooling changes route through local CI"
+    },
+    "smartmemory/": {
+      "command": "bash ops/ci/jankurai.sh",
+      "purpose": "smartmemory docs and data remain audit-routed"
+    },
+    "paper/": {
+      "command": "bash ops/ci/jankurai.sh",
+      "purpose": "paper evidence remains audit-routed"
+    },
+    "jnoccio-fusion/": {
+      "command": "bash ops/ci/fast.sh",
+      "purpose": "router fusion changes compile and test"
+    },
+    ".env.example": {
+      "command": "bash scripts/ci-doctor.sh",
+      "purpose": "environment template remains local-only"
+    },
+    ".gitignore": {
+      "command": "bash scripts/ci-local.sh",
+      "purpose": "ignored runtime paths and tracked artifacts remain separated"
+    },
+    ".gitlab-ci.yml": {
+      "command": "bash scripts/ci-local.sh",
+      "purpose": "legacy CI removal or parity changes stay reproducible"
+    },
+    "AGENTS.md": {
+      "command": "bash ops/ci/jankurai.sh",
+      "purpose": "agent routing remains canonical"
+    },
+    "CHANGELOG.md": {
+      "command": "bash ops/ci/jankurai.sh",
+      "purpose": "release history remains visible to audit"
+    },
+    "Justfile": {
+      "command": "bash scripts/ci-local.sh",
+      "purpose": "local entry points route to CI lanes"
+    },
+    "README.md": {
+      "command": "bash ops/ci/jankurai.sh",
+      "purpose": "operator documentation remains audit-routable"
+    },
+    "rust-toolchain.toml": {
+      "command": "bash ops/ci/fast.sh",
+      "purpose": "toolchain changes compile and test"
+    },
+    "package.json": {
+      "command": "bash scripts/ci-local.sh",
+      "purpose": "node entry points remain CI-routable"
+    },
+    "package-lock.json": {
+      "command": "bash scripts/ci-local.sh",
+      "purpose": "node lockfile changes remain reproducible"
+    },
+    "tsconfig.base.json": {
+      "command": "bash scripts/ci-local.sh",
+      "purpose": "typescript configuration remains checked"
+    },
+    "ZYAL_MISSION.md": {
+      "command": "bash ops/ci/jankurai.sh",
+      "purpose": "ZYAL mission docs remain routed"
+    },
+    "ZYAL_WORKFLOW.md": {
+      "command": "bash ops/ci/jankurai.sh",
+      "purpose": "ZYAL workflow docs remain routed"
+    },
+    "MEMORY_SYSTEM_LEVELUP.md": {
+      "command": "bash ops/ci/jankurai.sh",
+      "purpose": "memory system docs remain routed"
+    },
+    "JANKURAI_TASKLIST.md": {
+      "command": "bash ops/ci/jankurai.sh",
+      "purpose": "agent task plan remains routed"
+    },
+    "JANKURAI_TASKLIST.md.completed": {
+      "command": "bash ops/ci/jankurai.sh",
+      "purpose": "completed agent plan remains routed"
+    },
+    "SANDBOX_WORKPLAN.md": {
+      "command": "bash ops/ci/jankurai.sh",
+      "purpose": "sandbox workplan remains routed"
+    },
+    "codex-jankurai-loop.sh": {
+      "command": "bash scripts/ci-local.sh",
+      "purpose": "agent automation remains executable"
+    },
+    "jekko-jankurai-loop.sh": {
+      "command": "bash scripts/ci-local.sh",
+      "purpose": "agent automation remains executable"
+    },
+    "jekko-jankurai-loop-common.sh": {
+      "command": "bash scripts/ci-local.sh",
+      "purpose": "agent automation remains executable"
+    },
+    "jekko-jankurai-loop-runner.sh": {
+      "command": "bash scripts/ci-local.sh",
+      "purpose": "agent automation remains executable"
+    },
+    ".jankurai/": {
+      "command": "bash ops/ci/jankurai.sh",
+      "purpose": "local Jankurai score output remains reproducible"
+    },
+    "schemas/": {
+      "command": "bash ops/ci/jankurai.sh",
+      "purpose": "Jankurai schema artifacts remain routed"
+    },
+    "jekko-split/": {
+      "command": "bash scripts/ci-local.sh",
+      "purpose": "split-family tooling remains locally reproducible"
     }
   }
 }
