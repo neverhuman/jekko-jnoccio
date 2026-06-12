@@ -1,2 +1,25 @@
-# No generated source zones. `agent/repo-score.json` and `agent/repo-score.md`
-# are tracked audit evidence refreshed by `bash ops/ci/jankurai.sh`.
+schema_version = 1
+
+[[zone]]
+path = "Cargo.lock"
+source = "Cargo.toml"
+generator = "cargo"
+command = "cargo generate-lockfile"
+read_only = true
+write_policy = "lockfile"
+
+[[zone]]
+path = "agent/repo-score.json"
+source = "tracked source tree"
+generator = "jankurai"
+command = "bash ops/ci/jankurai.sh"
+read_only = true
+write_policy = "auditor_output"
+
+[[zone]]
+path = "agent/repo-score.md"
+source = "tracked source tree"
+generator = "jankurai"
+command = "bash ops/ci/jankurai.sh"
+read_only = true
+write_policy = "auditor_output"

@@ -1,0 +1,61 @@
+schema_version = "1.0.0"
+
+[[tools]]
+id = "audit-ci"
+mode = "advisory"
+notes = "CI runs ops/ci/jankurai.sh and uploads generated score artifacts."
+
+[[tools]]
+id = "proof-routing"
+mode = "advisory"
+notes = "agent/test-map.json routes changed paths to local proof lanes."
+
+[[tools]]
+id = "proofbind"
+mode = "auto"
+notes = "Proof evidence remains auto-adopted when available."
+
+[[tools]]
+id = "proofmark-rust"
+mode = "auto"
+notes = "Rust witness coverage remains auto-adopted when available."
+
+[[tools]]
+id = "security"
+mode = "advisory"
+notes = "ops/ci/security.sh runs fixed string scans and dependency checks."
+
+[[tools]]
+id = "ci-bad-behavior"
+mode = "advisory"
+notes = "GitHub Actions, timeouts, and concurrency are checked by security and audit lanes."
+
+[[tools]]
+id = "git-bad-behavior"
+mode = "advisory"
+notes = "Jankurai audit covers destructive git automation in advisory mode."
+
+[[tools]]
+id = "release-bad-behavior"
+mode = "auto"
+notes = "docs/release.md records release gate, integrity, and rollback evidence."
+
+[[tools]]
+id = "rust-witness"
+mode = "auto"
+notes = "Rust witness graphing remains auto-adopted when available."
+
+[[tools]]
+id = "agent-tool-supply"
+mode = "advisory"
+notes = "Trusted policy is reviewed through AGENTS.md and agent/JANKURAI_STANDARD.md."
+
+[[tools]]
+id = "release-readiness"
+mode = "auto"
+notes = "docs/release.md replaces manual launch checklist drift."
+
+[[tools]]
+id = "cost-budget"
+mode = "auto"
+notes = "docs/testing.md defines stop conditions and budget limits."

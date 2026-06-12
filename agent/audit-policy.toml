@@ -1,0 +1,6 @@
+schema_version = "1.0.0"
+
+cost_surface = []
+
+[dead_language]
+allow_terms = ["fallback"]

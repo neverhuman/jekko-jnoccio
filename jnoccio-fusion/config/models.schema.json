@@ -1,0 +1,115 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "JNoccio Fusion Model Registry",
+  "type": "object",
+  "required": ["schema_version", "models"],
+  "additionalProperties": false,
+  "properties": {
+    "schema_version": { "type": "integer", "const": 1 },
+    "models": {
+      "type": "array",
+      "minItems": 1,
+      "items": { "$ref": "#/$defs/model" }
+    }
+  },
+  "$defs": {
+    "model": {
+      "type": "object",
+      "required": [
+        "id",
+        "provider",
+        "model",
+        "display_name",
+        "api",
+        "env",
+        "signup_url",
+        "limits",
+        "context_window",
+        "max_output_tokens",
+        "capabilities",
+        "score",
+        "routing"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "id": { "type": "string", "minLength": 1 },
+        "provider": { "type": "string", "minLength": 1 },
+        "model": { "type": "string", "minLength": 1 },
+        "display_name": { "type": "string", "minLength": 1 },
+        "api": {
+          "type": "object",
+          "required": ["style", "base_url"],
+          "additionalProperties": false,
+          "properties": {
+            "style": { "type": "string", "minLength": 1 },
+            "base_url": { "type": "string", "minLength": 1 },
+            "completion_tokens_param": {
+              "type": "string",
+              "enum": ["max_tokens", "max_completion_tokens"]
+            }
+          }
+        },
+        "env": {
+          "type": "object",
+          "required": ["api_key"],
+          "additionalProperties": false,
+          "properties": {
+            "api_key": { "type": "string", "minLength": 1 }
+          }
+        },
+        "signup_url": { "type": "string", "minLength": 1 },
+        "limits": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "rpm": { "type": ["integer", "null"] },
+            "rpd": { "type": ["integer", "null"] },
+            "rpd_after_10_usd_credits": { "type": ["integer", "null"] },
+            "source_url": { "type": ["string", "null"] }
+          }
+        },
+        "context_window": { "type": "integer", "minimum": 1 },
+        "max_output_tokens": { "type": "integer", "minimum": 1 },
+        "capabilities": {
+          "type": "object",
+          "required": ["streaming", "tools", "reasoning", "openai_compatible"],
+          "additionalProperties": false,
+          "properties": {
+            "streaming": { "type": "boolean" },
+            "tools": { "type": "boolean" },
+            "reasoning": { "type": "boolean" },
+            "openai_compatible": { "type": "boolean" }
+          }
+        },
+        "score": {
+          "type": "object",
+          "required": ["power", "free_quota", "reliability", "integration", "latency"],
+          "additionalProperties": false,
+          "properties": {
+            "power": { "type": "integer", "minimum": 0 },
+            "free_quota": { "type": "integer", "minimum": 0 },
+            "reliability": { "type": "integer", "minimum": 0 },
+            "integration": { "type": "integer", "minimum": 0 },
+            "latency": { "type": "integer", "minimum": 0 }
+          }
+        },
+        "routing": {
+          "type": "object",
+          "required": ["enabled", "roles", "exploration_floor", "cooldown_seconds"],
+          "additionalProperties": false,
+          "properties": {
+            "enabled": { "type": "boolean" },
+            "roles": {
+              "type": "array",
+              "items": { "type": "string", "minLength": 1 },
+              "minItems": 1
+            },
+            "exploration_floor": { "type": "number", "minimum": 0 },
+            "cooldown_seconds": { "type": "integer", "minimum": 0 },
+            "disabled_reason": { "type": "string", "minLength": 1 }
+          }
+        }
+      }
+    }
+  }
+}

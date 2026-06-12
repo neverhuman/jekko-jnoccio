@@ -1,0 +1,42 @@
+# Split-package member of the jekko-jnoccio workspace. In the portal tree this
+# package is standalone; here the repo root owns the workspace.
+
+[package]
+name = "jnoccio-fusion"
+version = "1.0.0"
+edition = "2024"
+
+[dependencies]
+anyhow = "1"
+axum = { version = "0.8", features = ["json", "ws"] }
+chrono = { version = "0.4", features = ["serde"] }
+bytes = "1"
+agent-search = { path = "../crates/agent-search" }
+zyal-core = { path = "../crates/zyal-core" }
+zyal-key-pool = { path = "../crates/zyal-key-pool" }
+fs2 = "0.4"
+futures = "0.3"
+rand = "0.9"
+reqwest = { version = "0.12", default-features = false, features = ["blocking", "json", "stream", "rustls-tls"] }
+rusqlite = { version = "0.32", features = ["bundled"] }
+serde = { version = "1", features = ["derive"] }
+serde_json = "1"
+sha2 = "0.10"
+thiserror = "2"
+tokio = { version = "1", features = ["macros", "rt-multi-thread", "signal", "sync", "time"] }
+tokio-stream = "0.1"
+tower-http = { version = "0.6", features = ["cors", "fs"] }
+tracing = "0.1"
+tracing-subscriber = { version = "0.3", features = ["env-filter", "fmt", "json"] }
+uuid = { version = "1", features = ["v4", "serde"] }
+
+[dev-dependencies]
+proptest = "1"
+tempfile = "3"
+
+[lib]
+path = "src/lib.rs"
+
+[[bin]]
+name = "jnoccio-fusion"
+path = "src/main.rs"

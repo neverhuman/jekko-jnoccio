@@ -3,13 +3,15 @@ constraint_paths = ["db/constraints"]
 migration_paths = ["db/migrations"]
 root_paths = ["db"]
 
-[python]
-allowed_truth_paths = []
-
 [rust]
-domain_paths = ["src", "crates/domain"]
-forbidden_domain_imports = ["std::fs", "std::env", "std::net", "std::time::SystemTime", "rand::", "sqlx::", "diesel::", "reqwest::"]
+domain_paths = ["crates/*/src", "src"]
+forbidden_domain_imports = []
 
 [stack]
 id = "rust-split-family-child"
 version = "1.0.0"
+
+[typescript]
+forbidden_web_imports = ["sqlx", "pg", "postgres", "mysql", "better-sqlite3", "@aws-sdk/client-s3"]
+generated_contract_paths = ["contracts/generated"]
+web_paths = ["apps/web", "packages/web", "packages/ui"]

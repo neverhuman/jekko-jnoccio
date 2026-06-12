@@ -2,4 +2,5 @@
 
 ## Unreleased
 
-- Maintain the split-family child repository scaffold and audit evidence.
+- Ported jekko-jnoccio from scaffold to real split-family workspace.
+- Added authoritative Jankurai score generation and mirroring.

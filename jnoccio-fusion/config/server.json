@@ -1,0 +1,23 @@
+{
+  "bind": "0.0.0.0:4317",
+  "database": "state/jnoccio.sqlite",
+  "env_file": ".env.jnoccio",
+  "models_file": "config/models.json",
+  "receipts_dir": "receipts",
+  "model": "jnoccio/jnoccio-fusion",
+  "provider": "jnoccio",
+  "routing": {
+    "fusion_sample_rate": 0.1,
+    "fast_backup_count": 2,
+    "event_retention_rows": 50000,
+    "minute_bucket_retention_days": 30
+  },
+  "runtime": {
+    "worker_threads": 20,
+    "spawned_worker_threads": 2
+  },
+  "scaling": {
+    "max_instances": 20,
+    "spawn_batch_limit": 5
+  }
+}

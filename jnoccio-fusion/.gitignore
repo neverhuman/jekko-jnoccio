@@ -1,0 +1,7 @@
+target/
+/state/
+/receipts/
+.env.jnoccio
+*.sqlite
+*.sqlite-wal
+*.sqlite-shm

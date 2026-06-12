@@ -1,0 +1,16 @@
+{
+  "mcpServers": {
+    "jnoccio": {
+      "command": "/Users/bentaylor/Code/jekko/jnoccio-fusion/target/debug/jnoccio-mcp",
+      "args": [
+        "--config",
+        "/Users/bentaylor/Code/jekko/jnoccio-fusion/config/server.json",
+        "--ensure-server"
+      ],
+      "env": {
+        "MCP_TIMEOUT": "30000",
+        "MAX_MCP_OUTPUT_TOKENS": "50000"
+      }
+    }
+  }
+}

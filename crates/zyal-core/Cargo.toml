@@ -1,0 +1,15 @@
+[package]
+name = "zyal-core"
+version.workspace = true
+edition.workspace = true
+license.workspace = true
+publish = false
+description = "Canonical ZYAL types shared across the jekko workspace and the standalone jnoccio-fusion package."
+
+[lib]
+path = "src/lib.rs"
+
+[dependencies]
+serde.workspace = true
+serde_json.workspace = true
+thiserror.workspace = true

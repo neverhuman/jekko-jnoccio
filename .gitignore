@@ -1,2 +1,11 @@
 /target
 /.jankurai
+/.jekko
+/.env
+/.env.*
+!.env.example
+*.log
+*.sqlite
+*.sqlite3
+.DS_Store
+node_modules/

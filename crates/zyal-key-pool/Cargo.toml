@@ -1,0 +1,22 @@
+[package]
+name = "zyal-key-pool"
+version.workspace = true
+edition.workspace = true
+license.workspace = true
+publish = false
+description = "Per-user credential pool, round-robin balancer cursor, and stub budget policy hook for ZYAL multi-tenant routing."
+
+[lib]
+path = "src/lib.rs"
+
+[dependencies]
+anyhow.workspace = true
+chrono.workspace = true
+rusqlite = { version = "0.32", features = ["bundled"] }
+serde.workspace = true
+serde_json.workspace = true
+thiserror.workspace = true
+zyal-core = { path = "../zyal-core" }
+
+[dev-dependencies]
+tempfile = "3"
